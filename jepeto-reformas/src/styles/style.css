@@ -1,0 +1,95 @@
+/* ===== FONTS LOCALES ===== */
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/Inter-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/Inter-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../assets/fonts/Montserrat-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../assets/fonts/Montserrat-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('../assets/fonts/Roboto-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../assets/fonts/PlayfairDisplay-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ===== BASE STYLES ===== */
+body {
+  font-family: 'Inter', 'Roboto', sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ===== CUSTOM TAILWIND EXTENSIONS ===== */
+.text-primary { color: #057997; }
+.text-secondary { color: #FFC42B; }
+.bg-primary { background-color: #057997; }
+.bg-secondary { background-color: #FFC42B; }
+.bg-dark-bg { background-color: #1e293b; }
+
+/* ===== UTILITY CLASSES ===== */
+.service-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.service-card:hover { transform: translateY(-5px); box-shadow: 0 15px 25px rgba(5, 121, 151, 0.2); }
+
+/* ===== FADE-IN ANIMATIONS ===== */
+.fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+.fade-in.show { opacity: 1; transform: translateY(0); }
+
+/* ===== FORM STYLING ===== */
+input, select, textarea {
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  width: 100%;
+  outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #057997;
+  box-shadow: 0 0 0 3px rgba(5, 121, 151, 0.2);
+}
+
+/* ===== HEADER NAV ===== */
+header nav a:hover { color: #057997; transition: color 0.2s; }
+header button { background: none; border: none; }
+
+/* ===== FOOTER ===== */
+footer { font-size: 0.875rem; }
+footer a { color: #FFC42B; }

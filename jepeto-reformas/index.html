@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jepeto Reformas | Transformamos Espacios</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- CSS local -->
+  <link rel="stylesheet" href="src/styles/style.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+    .fade-in.show { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+<!-- HEADER -->
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+    <a href="index.html" class="text-3xl font-extrabold text-primary tracking-tight">
+      Jepeto<span class="text-secondary">Reformas</span>
+    </a>
+
+    <nav class="hidden md:flex space-x-6 font-medium">
+      <a href="#servicios" class="hover:text-secondary transition">Servicios</a>
+      <a href="#proyectos" class="hover:text-secondary transition">Proyectos</a>
+      <a href="galeria.html" class="hover:text-secondary transition">Galería</a>
+      <a href="blog.html" class="hover:text-secondary transition">Blog</a>
+      <a href="sobre-nosotros.html" class="hover:text-secondary transition">Nosotros</a>
+      <a href="contacto.html" class="bg-secondary text-primary py-2 px-4 rounded-lg hover:bg-yellow-400 transition">
+        Presupuesto
+      </a>
+    </nav>
+
+    <button class="md:hidden text-2xl text-primary">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section
+  class="relative h-screen flex items-center justify-center text-center"
+  style="background-image: url('src/assets/images/hero-bg.jpg'); background-size: cover; background-position: center;"
+>
+  <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+
+  <div class="relative z-10 text-white max-w-3xl px-4">
+    <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">Transformamos Espacios,<br> Creamos Hogares</h1>
+    <p class="text-lg md:text-xl mb-8 opacity-90">
+      Diseño moderno y funcional para cada reforma.<br>
+      Calidad, profesionalidad y compromiso en cada detalle.
+    </p>
+    <a href="#contacto" class="bg-secondary text-primary font-semibold py-3 px-8 rounded-xl shadow-lg hover:bg-yellow-400 transition">
+      Solicita tu Presupuesto
+    </a>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <h2 class="text-4xl font-bold text-primary mb-12 fade-in">Nuestros Servicios</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-gray-50 p-6 rounded-xl shadow-md fade-in">
+        <img src="src/assets/images/servicios/reformas-integrales.jpg" alt="Reformas Integrales" class="w-full h-48 object-cover rounded-lg mb-4">
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Reformas Integrales</h3>
+        <p class="text-gray-500">Renovación completa de viviendas y locales con acabados de alta calidad.</p>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-xl shadow-md fade-in">
+        <img src="src/assets/images/servicios/cocinas.jpg" alt="Cocinas y Baños" class="w-full h-48 object-cover rounded-lg mb-4">
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Cocinas y Baños</h3>
+        <p class="text-gray-500">Diseños modernos, prácticos y adaptados a cada estilo de vida.</p>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-xl shadow-md fade-in">
+        <img src="src/assets/images/servicios/pintura.jpg" alt="Pintura y Acabados" class="w-full h-48 object-cover rounded-lg mb-4">
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Pintura y Acabados</h3>
+        <p class="text-gray-500">Pintura decorativa, pladur, electricidad y más con total garantía.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="proyectos" class="py-20 bg-gray-100">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-4xl font-bold text-primary text-center mb-12 fade-in">Últimos Proyectos</h2>
+    <div class="grid md:grid-cols-3 gap-6 fade-in">
+      <img src="src/assets/images/proyectos/proyecto1.jpg" alt="Proyecto 1" class="w-full h-64 object-cover rounded-lg shadow-md">
+      <img src="src/assets/images/proyectos/proyecto2.jpg" alt="Proyecto 2" class="w-full h-64 object-cover rounded-lg shadow-md">
+      <img src="src/assets/images/proyectos/proyecto3.jpg" alt="Proyecto 3" class="w-full h-64 object-cover rounded-lg shadow-md">
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <h2 class="text-3xl font-bold text-primary mb-4">¿Hablamos de tu proyecto?</h2>
+      <p class="text-gray-700 mb-4">Déjanos tus datos y te contactaremos en menos de 24 horas.</p>
+      <p class="text-gray-700 mb-2">📞 +34 652 565 961</p>
+      <p class="text-gray-700 mb-2">📧 info@jepeto.es</p>
+      <p class="text-gray-700">📍 Granada 18011</p>
+    </div>
+    <div class="bg-gray-100 p-8 rounded-xl shadow-md">
+      <form>
+        <input type="text" id="nombre" placeholder="Nombre" class="w-full mb-4 p-3 rounded border focus:ring-2 focus:ring-secondary" required>
+        <input type="email" id="email" placeholder="Email" class="w-full mb-4 p-3 rounded border focus:ring-2 focus:ring-secondary" required>
+        <textarea id="mensaje" rows="4" placeholder="Mensaje" class="w-full mb-4 p-3 rounded border focus:ring-2 focus:ring-secondary"></textarea>
+        <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-cyan-700 transition">Enviar Mensaje</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-gray-300 text-center py-6">
+  <img src="src/assets/images/logo.png" alt="Logo Jepeto Reformas" class="mx-auto mb-3 w-20 opacity-80">
+  <p>&copy; 2025 Jepeto Reformas • Granada • 
+    <a href="https://jepeto.es" class="underline hover:text-secondary transition">www.jepeto.es</a>
+  </p>
+</footer>
+
+<!-- JS -->
+<script src="src/js/main.js"></script>
+<script>
+  // Animación fade-in al hacer scroll
+  const faders = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.3 });
+  faders.forEach(fader => observer.observe(fader));
+</script>
+</body>
+</html>

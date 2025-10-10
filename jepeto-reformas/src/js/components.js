@@ -1,0 +1,3 @@
+// components.js
+console.log("Componentes inicializados correctamente 🚀");
+// Aquí puedes agregar funciones futuras: carruseles, filtros, modales...

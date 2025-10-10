@@ -1,0 +1,8 @@
+{
+  "name": "jepeto-reformas",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "echo 'Configura tu servidor local o Live Server'"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+      <!-- Nuestro CSS local -->
+    <link rel="stylesheet" href="src/styles/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nosotros | Jepeto Reformas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+
+<header class="bg-white shadow-md sticky top-0 z-50 p-4 flex justify-between items-center">
+  <a href="index.html" class="text-3xl font-extrabold text-primary">Jepeto<span class="text-secondary">Reformas</span></a>
+  <nav class="flex space-x-4">
+    <a href="index.html">Inicio</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="galeria.html">Galería</a>
+    <a href="blog.html">Blog</a>
+    <a href="sobre-nosotros.html">Sobre Nosotros</a>
+    <a href="contacto.html" class="bg-secondary text-primary py-1 px-3 rounded">Pide Presupuesto</a>
+  </nav>
+</header>
+
+<main class="max-w-6xl mx-auto p-8 space-y-12">
+  <section class="flex flex-col md:flex-row items-center gap-8">
+    <img src="src/assets/images/proyecto1.jpg" alt="Equipo Jepeto Reformas" class="w-full md:w-1/2 rounded-lg shadow-lg">
+    <div>
+      <h1 class="text-4xl font-bold text-primary mb-4">Conoce a Jepeto Reformas</h1>
+      <p class="text-gray-700 mb-4">
+        En <strong>Jepeto Reformas</strong> llevamos más de 10 años transformando espacios en Granada. Nuestro equipo combina creatividad, profesionalidad y atención al detalle para garantizar resultados que superen tus expectativas.
+      </p>
+      <p class="text-gray-700">
+        Nos especializamos en reformas integrales, parciales y mantenimiento de alta calidad. Cada proyecto es único, y trabajamos contigo desde el diseño hasta la entrega final.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="text-3xl font-bold text-primary mb-4">Nuestra Filosofía</h2>
+    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+      <li>Diseño personalizado adaptado a tus necesidades.</li>
+      <li>Calidad y acabados de alto nivel.</li>
+      <li>Compromiso y transparencia en todo el proceso.</li>
+      <li>Entrega puntual y seguimiento post-proyecto.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="text-3xl font-bold text-primary mb-4">Nuestro Equipo</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-xl shadow-lg p-4 text-center">
+        <img src="src/assets/images/galeria1.jpg" alt="Juan" class="w-32 h-32 mx-auto rounded-full object-cover mb-3">
+        <h3 class="text-xl font-semibold text-gray-700">Juan Sosoñuk</h3>
+        <p class="text-gray-500 text-sm">Director & Fundador</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg p-4 text-center">
+        <img src="src/assets/images/galeria2.jpg" alt="María" class="w-32 h-32 mx-auto rounded-full object-cover mb-3">
+        <h3 class="text-xl font-semibold text-gray-700">María López</h3>
+        <p class="text-gray-500 text-sm">Arquitecta & Diseño</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-lg p-4 text-center">
+        <img src="src/assets/images/galeria3.jpg" alt="Carlos" class="w-32 h-32 mx-auto rounded-full object-cover mb-3">
+        <h3 class="text-xl font-semibold text-gray-700">Carlos Ruiz</h3>
+        <p class="text-gray-500 text-sm">Jefe de Obra</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-dark-bg text-white text-center py-6 mt-12">
+  <p>&copy; 2025 Jepeto Reformas • Granada • <a href="https://jepeto.es" class="underline">www.jepeto.es</a></p>
+</footer>
+
+<script src="src/js/components.js"></script>
+<script src="src/js/main.js"></script>
+</body>
+</html>
