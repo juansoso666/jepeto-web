@@ -1,0 +1,45 @@
+🚀 Despliegue en Servidor (Linux)
+
+Instalar Nginx
+
+sudo apt update
+sudo apt install nginx -y
+
+
+Copiar los archivos del proyecto
+
+sudo mkdir -p /var/www/jepeto
+sudo cp -r * /var/www/jepeto
+
+
+
+Configurar la creación del host virtual/etc/nginx/sites-available/jepeto :
+
+server {
+    listen 80;
+    server_name jepeto.es www.jepeto.es;
+    root /var/www/jepeto;
+    index index.html;
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+
+
+Activar y reiniciar Nginx
+
+sudo ln -s /etc/nginx/sites-available/jepeto /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx
+
+🔐 Seguridad y Mantenimiento
+
+Usa HTTPS con Let's Encrypt :
+
+sudo apt install certbot python3-certbot-nginx
+sudo certbot --nginx -d jepeto.es -d www.jepeto.es
+
+
+Restrinja el acceso SSH (solo claves públicas).
+
+Realiza copias de seguridad periódicas del directorio /var/www/jepetoy de la configuración de Nginx.

@@ -1,0 +1,12 @@
+# Opción 1: Live Server en VSCode
+# Haz clic derecho sobre index.html y elige "Open with Live Server"
+
+# Opción 2: Python HTTP Server (sin instalar nada)
+cd jepeto-reformas
+python -m http.server 8080
+
+
+
+
+Luego abre en el navegador:
+👉 http://localhost:8080

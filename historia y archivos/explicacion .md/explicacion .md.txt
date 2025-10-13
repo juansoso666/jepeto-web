@@ -1,0 +1,18 @@
+
+👉 En resumen:
+| Archivo | Propósito |
+|----------|------------|
+| `README.md` | Explica qué es tu proyecto y cómo usarlo. (Se muestra automáticamente en GitHub.) |
+| `DEPLOY_GUIDE.md` | Guía paso a paso de instalación y despliegue. |
+| `SECURITY.md` | (Opcional) Explica políticas de seguridad o mantenimiento. |
+| `CHANGELOG.md` | (Opcional) Registra los cambios o versiones del sitio. |
+| `BACKUP_GUIDE.md` | (Opcional) Explica cómo hacer copias de seguridad. |
+
+Markdown es **texto plano**, por lo que puedes abrirlo y editarlo con cualquier editor (VSCode, Bloc de notas, etc.), y GitHub lo mostrará con formato bonito.
+
+---
+
+## ⚙️ 2️⃣ Guardar el paso a paso que mencionas (para tener todo organizado)
+
+Podemos crear varios archivos `.md` para guardar las guías que ya tienes:
+
