@@ -1,47 +1,117 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-      <!-- Nuestro CSS local -->
-    <link rel="stylesheet" href="src/styles/style.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Galería | Jepeto Reformas</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="src/assets/images/favicon.png">
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- CSS local -->
+  <link rel="stylesheet" href="src/styles/style.css">
+
+  <!-- Paleta Jepeto -->
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    :root {
+      --color-primary: #004AAD;   /* Azul */
+      --color-secondary: #FFD700; /* Amarillo */
+    }
+    .text-primary { color: var(--color-primary); }
+    .text-secondary { color: var(--color-secondary); }
+    .bg-primary { background-color: var(--color-primary); }
+    .bg-secondary { background-color: var(--color-secondary); }
+
+    html { scroll-behavior: smooth; }
+
+    .gallery-img {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery-img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25D366;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: transform 0.2s ease-in-out;
+    }
+    .whatsapp-btn:hover { transform: scale(1.1); }
   </style>
 </head>
+
 <body class="font-sans bg-gray-50 text-gray-800">
 
+<!-- HEADER -->
 <header class="bg-white shadow-md sticky top-0 z-50 p-4 flex justify-between items-center">
   <a href="index.html" class="text-3xl font-extrabold text-primary">Jepeto<span class="text-secondary">Reformas</span></a>
-  <nav class="flex space-x-4">
-    <a href="index.html">Inicio</a>
-    <a href="servicios.html">Servicios</a>
-    <a href="proyectos.html">Proyectos</a>
-    <a href="galeria.html">Galería</a>
-    <a href="blog.html">Blog</a>
-    <a href="sobre-nosotros.html">Sobre Nosotros</a>
-    <a href="contacto.html" class="bg-secondary text-primary py-1 px-3 rounded">Pide Presupuesto</a>
+  <nav class="hidden md:flex space-x-5 font-medium">
+    <a href="index.html" class="hover:text-secondary transition">Inicio</a>
+    <a href="servicios.html" class="hover:text-secondary transition">Servicios</a>
+    <a href="proyectos.html" class="hover:text-secondary transition">Proyectos</a>
+    <a href="galeria.html" class="text-secondary font-semibold">Galería</a>
+    <a href="blog.html" class="hover:text-secondary transition">Blog</a>
+    <a href="sobre-nosotros.html" class="hover:text-secondary transition">Nosotros</a>
+    <a href="contacto.html" class="bg-secondary text-primary py-1 px-4 rounded hover:bg-yellow-400 transition">Presupuesto</a>
   </nav>
+  <button class="md:hidden text-3xl text-primary" id="menu-toggle">☰</button>
 </header>
 
-<main class="max-w-6xl mx-auto p-8">
-  <h1 class="text-4xl font-bold text-primary mb-6">Galería de Reformas</h1>
-  <p class="mb-8 text-gray-700">Fotos de proyectos recientes y transformaciones realizadas por Jepeto Reformas.</p>
+<!-- MAIN -->
+<main class="max-w-6xl mx-auto px-6 py-12">
+  <h1 class="text-4xl font-bold text-primary mb-4">Galería de Reformas</h1>
+  <p class="text-gray-700 mb-10">
+    Algunos de nuestros proyectos más recientes. Cada trabajo refleja nuestro compromiso con la calidad y el detalle.
+  </p>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    <img src="src/assets/images/galeria1.jpg" alt="Galería 1" class="w-full rounded-lg shadow">
-    <img src="src/assets/images/galeria2.jpg" alt="Galería 2" class="w-full rounded-lg shadow">
-    <img src="src/assets/images/galeria3.jpg" alt="Galería 3" class="w-full rounded-lg shadow">
+    <img src="src/assets/images/galeria/galeria1.jpg" alt="Reforma 1" class="gallery-img rounded-lg shadow-lg w-full h-64 object-cover">
+    <img src="src/assets/images/galeria/galeria2.jpg" alt="Reforma 2" class="gallery-img rounded-lg shadow-lg w-full h-64 object-cover">
+    <img src="src/assets/images/galeria/galeria3.jpg" alt="Reforma 3" class="gallery-img rounded-lg shadow-lg w-full h-64 object-cover">
+    <img src="src/assets/images/galeria/galeria4.jpg" alt="Reforma 4" class="gallery-img rounded-lg shadow-lg w-full h-64 object-cover">
+    <img src="src/assets/images/galeria/galeria5.jpg" alt="Reforma 5" class="gallery-img rounded-lg shadow-lg w-full h-64 object-cover">
+    <img src="src/assets/images/galeria/galeria6.jpg" alt="Reforma 6" class="gallery-img rounded-lg shadow-lg w-full h-64 object-cover">
   </div>
 </main>
 
-<footer class="bg-dark-bg text-white text-center py-6 mt-12">
-  <p>&copy; 2025 Jepeto Reformas • Granada • <a href="https://jepeto.es" class="underline">www.jepeto.es</a></p>
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-gray-300 text-center py-6 mt-16">
+  <img src="src/assets/images/logo.png" alt="Logo Jepeto Reformas" class="mx-auto mb-3 w-20 opacity-80">
+  <p>&copy; 2025 Jepeto Reformas • Granada • 
+    <a href="https://jepeto.es" class="underline hover:text-secondary transition">www.jepeto.es</a>
+  </p>
 </footer>
 
-<script src="src/js/components.js"></script>
-<script src="src/js/main.js"></script>
+<!-- BOTÓN WHATSAPP -->
+<a href="https://wa.me/34652565961?text=Hola%20Jepeto%2C%20quiero%20pedir%20un%20presupuesto" 
+   class="whatsapp-btn" 
+   target="_blank" 
+   aria-label="Abrir chat de WhatsApp">
+   <img src="src/assets/icons/whatsapp.png" alt="WhatsApp" class="w-8 h-8">
+</a>
+
+<!-- JS -->
+<script>
+  // Menú móvil
+  const toggleBtn = document.getElementById('menu-toggle');
+  toggleBtn?.addEventListener('click', () => {
+    document.querySelector('nav.hidden')?.classList.toggle('hidden');
+  });
+</script>
+
 </body>
 </html>

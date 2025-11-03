@@ -1,83 +1,97 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-      <!-- Nuestro CSS local -->
-    <link rel="stylesheet" href="src/styles/style.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sobre Nosotros | Jepeto Reformas</title>
+
+  <link rel="icon" type="image/png" href="src/assets/images/favicon.png" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="src/styles/style.css" />
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-    html { scroll-behavior: smooth; }
+    :root { --color-primary: #004AAD; --color-secondary: #FFD700; }
+    .text-primary { color: var(--color-primary); }
+    .text-secondary { color: var(--color-secondary); }
+    .bg-primary { background-color: var(--color-primary); }
+    .bg-secondary { background-color: var(--color-secondary); }
+
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25D366;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: transform 0.2s ease-in-out;
+    }
+    .whatsapp-btn:hover { transform: scale(1.1); }
   </style>
 </head>
-<body class="font-sans bg-gray-50 text-gray-800">
 
+<body class="font-sans bg-gray-50 text-gray-800">
 <header class="bg-white shadow-md sticky top-0 z-50 p-4 flex justify-between items-center">
   <a href="index.html" class="text-3xl font-extrabold text-primary">Jepeto<span class="text-secondary">Reformas</span></a>
-  <nav class="flex space-x-4">
-    <a href="index.html">Inicio</a>
-    <a href="servicios.html">Servicios</a>
-    <a href="proyectos.html">Proyectos</a>
-    <a href="galeria.html">Galería</a>
-    <a href="blog.html">Blog</a>
-    <a href="sobre-nosotros.html">Sobre Nosotros</a>
-    <a href="contacto.html" class="bg-secondary text-primary py-1 px-3 rounded">Pide Presupuesto</a>
+  <nav class="hidden md:flex space-x-4 font-medium">
+    <a href="index.html" class="hover:text-secondary transition">Inicio</a>
+    <a href="servicios.html" class="hover:text-secondary transition">Servicios</a>
+    <a href="proyectos.html" class="hover:text-secondary transition">Proyectos</a>
+    <a href="galeria.html" class="hover:text-secondary transition">Galería</a>
+    <a href="blog.html" class="hover:text-secondary transition">Blog</a>
+    <a href="sobre-nosotros.html" class="text-secondary font-semibold">Nosotros</a>
+    <a href="contacto.html" class="bg-secondary text-primary py-1 px-4 rounded hover:bg-yellow-400 transition">Presupuesto</a>
   </nav>
 </header>
 
 <main class="max-w-6xl mx-auto p-8 space-y-12">
   <section class="flex flex-col md:flex-row items-center gap-8">
-    <img src="src/assets/images/proyecto1.jpg" alt="Equipo Jepeto Reformas" class="w-full md:w-1/2 rounded-lg shadow-lg">
+    <img src="src/assets/images/sobre-nosotros/taller.jpg" alt="Equipo Jepeto" class="w-full md:w-1/2 rounded-lg shadow-lg">
     <div>
-      <h1 class="text-4xl font-bold text-primary mb-4">Conoce a Jepeto Reformas</h1>
+      <h1 class="text-4xl font-bold text-primary mb-4">Sobre Jepeto Reformas</h1>
       <p class="text-gray-700 mb-4">
-        En <strong>Jepeto Reformas</strong> llevamos más de 10 años transformando espacios en Granada. Nuestro equipo combina creatividad, profesionalidad y atención al detalle para garantizar resultados que superen tus expectativas.
+        En <strong>Jepeto Reformas</strong> llevamos más de una década ofreciendo reformas personalizadas en Granada. Nuestra misión es mejorar hogares con un equilibrio perfecto entre diseño, funcionalidad y calidad.
       </p>
-      <p class="text-gray-700">
-        Nos especializamos en reformas integrales, parciales y mantenimiento de alta calidad. Cada proyecto es único, y trabajamos contigo desde el diseño hasta la entrega final.
-      </p>
+      <p class="text-gray-700">Nos especializamos en reformas integrales, parciales y mantenimiento con un equipo apasionado y comprometido.</p>
     </div>
-  </section>
-
-  <section>
-    <h2 class="text-3xl font-bold text-primary mb-4">Nuestra Filosofía</h2>
-    <ul class="list-disc pl-6 text-gray-700 space-y-2">
-      <li>Diseño personalizado adaptado a tus necesidades.</li>
-      <li>Calidad y acabados de alto nivel.</li>
-      <li>Compromiso y transparencia en todo el proceso.</li>
-      <li>Entrega puntual y seguimiento post-proyecto.</li>
-    </ul>
   </section>
 
   <section>
     <h2 class="text-3xl font-bold text-primary mb-4">Nuestro Equipo</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      <div class="bg-white rounded-xl shadow-lg p-4 text-center">
-        <img src="src/assets/images/galeria1.jpg" alt="Juan" class="w-32 h-32 mx-auto rounded-full object-cover mb-3">
-        <h3 class="text-xl font-semibold text-gray-700">Juan Sosoñuk</h3>
-        <p class="text-gray-500 text-sm">Director & Fundador</p>
+      <div class="bg-white p-4 rounded-xl shadow-md text-center">
+        <img src="src/assets/images/sobre-nosotros/equipo1.png" class="w-28 h-28 rounded-full mx-auto mb-3 object-cover" alt="Juan">
+        <h3 class="font-semibold text-lg text-primary">Juan Sosoñuk</h3>
+        <p class="text-gray-500">Director & Fundador</p>
       </div>
-      <div class="bg-white rounded-xl shadow-lg p-4 text-center">
-        <img src="src/assets/images/galeria2.jpg" alt="María" class="w-32 h-32 mx-auto rounded-full object-cover mb-3">
-        <h3 class="text-xl font-semibold text-gray-700">María López</h3>
-        <p class="text-gray-500 text-sm">Arquitecta & Diseño</p>
+      <div class="bg-white p-4 rounded-xl shadow-md text-center">
+        <img src="src/assets/images/sobre-nosotros/equipo2.jpg" class="w-28 h-28 rounded-full mx-auto mb-3 object-cover" alt="María">
+        <h3 class="font-semibold text-lg text-primary">María López</h3>
+        <p class="text-gray-500">Arquitecta</p>
       </div>
-      <div class="bg-white rounded-xl shadow-lg p-4 text-center">
-        <img src="src/assets/images/galeria3.jpg" alt="Carlos" class="w-32 h-32 mx-auto rounded-full object-cover mb-3">
-        <h3 class="text-xl font-semibold text-gray-700">Carlos Ruiz</h3>
-        <p class="text-gray-500 text-sm">Jefe de Obra</p>
+      <div class="bg-white p-4 rounded-xl shadow-md text-center">
+        <img src="src/assets/images/galeria/galeria3.jpg" class="w-28 h-28 rounded-full mx-auto mb-3 object-cover" alt="Carlos">
+        <h3 class="font-semibold text-lg text-primary">Carlos Ruiz</h3>
+        <p class="text-gray-500">Jefe de Obra</p>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="bg-dark-bg text-white text-center py-6 mt-12">
-  <p>&copy; 2025 Jepeto Reformas • Granada • <a href="https://jepeto.es" class="underline">www.jepeto.es</a></p>
+<footer class="bg-gray-900 text-gray-300 text-center py-6 mt-16">
+  <img src="src/assets/images/logo.png" alt="Logo Jepeto Reformas" class="mx-auto mb-3 w-20 opacity-80">
+  <p>&copy; 2025 Jepeto Reformas • Granada • 
+    <a href="https://jepeto.es" class="underline hover:text-secondary transition">www.jepeto.es</a>
+  </p>
 </footer>
 
-<script src="src/js/components.js"></script>
-<script src="src/js/main.js"></script>
+<a href="https://wa.me/34652565961" class="whatsapp-btn" target="_blank">
+  <img src="src/assets/icons/whatsapp.png" alt="WhatsApp" class="w-8 h-8">
+</a>
 </body>
 </html>

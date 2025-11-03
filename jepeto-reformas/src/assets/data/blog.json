@@ -1,0 +1,20 @@
+[
+  {
+    "titulo": "5 Ideas para Reformar tu Cocina",
+    "descripcion": "Optimiza espacio y estilo con las últimas tendencias en cocinas modernas.",
+    "imagen": "src/assets/images/proyectos/proyecto1.jpg",
+    "url": "#"
+  },
+  {
+    "titulo": "Reformas Integrales vs. Parciales",
+    "descripcion": "Descubre cuál opción se adapta mejor a tus necesidades y presupuesto.",
+    "imagen": "src/assets/images/proyectos/proyecto2.jpg",
+    "url": "#"
+  },
+  {
+    "titulo": "Decoración Moderna para Salones",
+    "descripcion": "Ideas prácticas para transformar tu salón en un espacio moderno y acogedor.",
+    "imagen": "src/assets/images/proyectos/proyecto3.jpg",
+    "url": "#"
+  }
+]
