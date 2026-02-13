@@ -1,4 +1,4 @@
-jepeto-reformas/
+docs/
 │
 ├── index.html               # Página principal (Landing Page)
 ├── servicios.html           # Detalle de servicios ofrecidos

@@ -1,7 +1,7 @@
 import os
 
 # Nombre del proyecto
-project_name = "jepeto-reformas"
+project_name = "docs"
 
 # Estructura de carpetas
 folders = [
@@ -53,7 +53,7 @@ package_json_path = os.path.join(project_name, "package.json")
 if not os.path.exists(package_json_path):
     with open(package_json_path, "w", encoding="utf-8") as f:
         f.write("""{
-  "name": "jepeto-reformas",
+  "name": "jepeto-reformas-website",
   "version": "1.0.0",
   "scripts": {
     "start": "echo 'Configura tu servidor local o Live Server'"
