@@ -48,7 +48,7 @@ server {
     listen 80;
     server_name $DOMINIO www.$DOMINIO;
 
-    root $WEB_DIR/jepeto-reformas;
+    root $WEB_DIR/docs;
     index index.html;
 
     location / {
@@ -85,7 +85,7 @@ sudo dpkg-reconfigure -f noninteractive unattended-upgrades
 echo ""
 echo "✅ Instalación completada correctamente"
 echo "🌍 Tu sitio web está activo en: https://$DOMINIO"
-echo "📁 Directorio de la web: $WEB_DIR/jepeto-reformas"
+echo "📁 Directorio de la web: $WEB_DIR/docs"
 echo "📜 Logs: /var/log/nginx/$DOMINIO.access.log / error.log"
 echo ""
 echo "🧠 Consejo: usa 'sudo systemctl status nginx' o 'sudo tail -f /var/log/nginx/$DOMINIO.error.log' para verificar el estado."

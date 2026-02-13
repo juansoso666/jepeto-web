@@ -22,7 +22,7 @@
    └─ Ir a Pull Requests → Merge
 
 2. Activar GitHub Pages  
-   └─ Settings → Pages → main/jepeto-reformas → Save
+   └─ Settings → Pages → main/docs → Save
 
 3. ¡LISTO! Tu sitio estará en:
    https://juansoso666.github.io/jepeto-web/

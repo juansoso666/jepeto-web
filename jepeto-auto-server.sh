@@ -13,7 +13,7 @@ DOMINIO="jepeto.es"
 EMAIL_SSL="info@jepeto.es"
 GIT_REPO="git@github.com:juansoso666/jepeto-web.git"
 WEB_DIR="/var/www/jepeto"
-CARPETA_WEB="jepeto-reformas"
+CARPETA_WEB="docs"
 NGINX_CONF="/etc/nginx/sites-available/$DOMINIO"
 LOGFILE="/var/log/jepeto-install.log"
 

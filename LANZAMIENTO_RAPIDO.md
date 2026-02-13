@@ -11,7 +11,7 @@
 1. Ve a: https://github.com/juansoso666/jepeto-web/settings/pages
 2. En "Source", selecciona:
    - Branch: `main`
-   - Folder: `/jepeto-reformas`
+   - Folder: `/docs`
 3. Clic en "Save"
 
 ### Paso 3: ¡Listo!

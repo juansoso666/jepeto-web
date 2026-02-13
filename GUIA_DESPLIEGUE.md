@@ -58,7 +58,7 @@ git push origin main
 1. Ve a tu repositorio en GitHub
 2. Settings → Pages
 3. Source: Selecciona "Deploy from a branch"
-4. Branch: Selecciona `main` y carpeta `/jepeto-reformas`
+4. Branch: Selecciona `main` y carpeta `/docs`
 5. Clic en "Save"
 6. Tu sitio estará disponible en: `https://juansoso666.github.io/jepeto-web/`
 
@@ -94,7 +94,7 @@ git push origin main
 3. "New site from Git" → Selecciona tu repositorio
 4. Configure:
    - Build command: (dejar vacío)
-   - Publish directory: `jepeto-reformas`
+   - Publish directory: `docs`
 5. Deploy!
 
 Tu sitio estará en: `https://tu-sitio.netlify.app`
@@ -120,7 +120,7 @@ Tu sitio estará en: `https://tu-sitio.netlify.app`
 3. Import tu repositorio
 4. Configure:
    - Framework: Other
-   - Root Directory: `jepeto-reformas`
+   - Root Directory: `docs`
 5. Deploy!
 
 ---
@@ -205,7 +205,7 @@ git push origin main
    ```
    Source: Deploy from a branch
    Branch: main
-   Folder: /jepeto-reformas
+   Folder: /docs
    ```
 
 3. **Click "Save"**
@@ -223,9 +223,9 @@ git push origin main
    - Custom domain: `jepeto.es`
    - ✅ Enforce HTTPS (marcar esta opción)
 
-2. **Crear archivo CNAME en jepeto-reformas:**
+2. **Crear archivo CNAME en docs:**
    ```bash
-   cd jepeto-reformas
+   cd docs
    echo "jepeto.es" > CNAME
    git add CNAME
    git commit -m "Add custom domain"
@@ -293,7 +293,7 @@ git push origin main
 
 ### 📝 Crear Sitemap (Opcional)
 
-Crea `jepeto-reformas/sitemap.xml`:
+Crea `docs/sitemap.xml`:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -343,7 +343,7 @@ git merge copilot/improve-website-design
 git push origin main
 
 # 2. Ir a GitHub Settings → Pages
-# 3. Seleccionar: main branch, /jepeto-reformas folder
+# 3. Seleccionar: main branch, /docs folder
 # 4. Save
 # 5. Esperar 2-3 minutos
 # 6. Visitar: https://juansoso666.github.io/jepeto-web/
@@ -354,7 +354,7 @@ git push origin main
 ```bash
 # 1. Conectar GitHub a Netlify
 # 2. Import repositorio
-# 3. Publish directory: jepeto-reformas
+# 3. Publish directory: docs
 # 4. Deploy!
 ```
 
