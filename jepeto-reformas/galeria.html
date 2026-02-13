@@ -36,49 +36,6 @@
 
     html { scroll-behavior: smooth; }
 
-    .gallery-img {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-    .gallery-img:hover {
-      transform: scale(1.04);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    }
-
-    /* Lightbox Styles */
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-      align-items: center;
-      justify-content: center;
-    }
-    .lightbox.active {
-      display: flex;
-    }
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90vh;
-      object-fit: contain;
-    }
-    .lightbox-close {
-      position: absolute;
-      top: 20px;
-      right: 40px;
-      color: white;
-      font-size: 40px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .lightbox-close:hover {
-      color: #FFD700;
-    }
-
     .whatsapp-btn {
       position: fixed;
       bottom: 25px;
@@ -157,44 +114,7 @@
 </a>
 
 <!-- JS -->
-<script>
-  // Menú móvil
-  const toggleBtn = document.getElementById('menu-toggle');
-  toggleBtn?.addEventListener('click', () => {
-    document.querySelector('nav.hidden')?.classList.toggle('hidden');
-  });
-
-  // Lightbox functionality
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const lightboxClose = document.getElementById('lightbox-close');
-  const galleryImages = document.querySelectorAll('.gallery-img');
-
-  galleryImages.forEach(img => {
-    img.addEventListener('click', () => {
-      lightbox.classList.add('active');
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
-    });
-  });
-
-  lightboxClose.addEventListener('click', () => {
-    lightbox.classList.remove('active');
-  });
-
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-      lightbox.classList.remove('active');
-    }
-  });
-
-  // Close lightbox on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-      lightbox.classList.remove('active');
-    }
-  });
-</script>
+<script src="/src/js/main.js"></script>
 
 </body>
 </html>
