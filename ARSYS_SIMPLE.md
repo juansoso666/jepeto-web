@@ -89,6 +89,33 @@ Haz clic en **"Guardar"** o **"Añadir"**
 
 ## ⚠️ NOTAS IMPORTANTES
 
+### 🔴 ERROR COMÚN: "El nombre debe ser el nombre del dominio o un subdominio suyo"
+
+Si recibes este error al añadir el CNAME:
+```
+Error: El nombre debe ser el nombre del dominio o un subdominio suyo y contener caracteres validos.
+```
+
+**CAUSA:** En "Entrada DNS" pusiste el dominio completo
+
+❌ **INCORRECTO:**
+```
+Entrada DNS: www.jepeto.es
+Tipo: CNAME
+Valor: juansoso666.github.io
+```
+
+✅ **CORRECTO:**
+```
+Entrada DNS: www
+Tipo: CNAME
+Valor: juansoso666.github.io
+```
+
+**SOLUCIÓN:** En "Entrada DNS" solo pon **www** (SIN .jepeto.es)
+
+---
+
 ### ¿Qué es "@"?
 - El símbolo **@** representa tu dominio raíz (jepeto.es)
 - Si tu panel NO acepta @, prueba:
@@ -99,14 +126,27 @@ Haz clic en **"Guardar"** o **"Añadir"**
 Si al poner **juansoso666.github.io** en el CNAME te da error, prueba con:
 - **juansoso666.github.io.**  (con punto al final)
 
-### Registros antiguos
-**ANTES de añadir estos registros**, elimina:
-- ❌ Cualquier registro **A** que ya exista en **@**
-- ❌ Cualquier registro **CNAME** en **@** (no debe existir)
+### 🚨 SI YA TIENES EMAIL CONFIGURADO (MUY IMPORTANTE)
+
+Si ya tienes registros MX, TXT, SPF, DMARC (para email con Zoho, Google Workspace, etc.):
 
 **NO elimines:**
-- ✅ Registros **MX** (para email)
-- ✅ Registros **TXT** (verificaciones)
+- ✅ Registros **MX** (mx.serviciodecorreo.es, mx.zoho.eu, etc.)
+- ✅ Registros **TXT** (zoho-verification, verificaciones)
+- ✅ Registros **SPF** (v=spf1 include:...)
+- ✅ Registros **DMARC** (_dmarc.jepeto.es)
+- ✅ Registros **CNAME** (autoconfig, autodiscover, control)
+
+**Solo AÑADE los nuevos registros:**
+- ➕ 4 registros **A** en **@** (GitHub Pages IPs)
+- ➕ 1 registro **CNAME** en **www** (GitHub Pages)
+
+Los registros de email y los nuevos registros de GitHub Pages **pueden coexistir** en el mismo dominio.
+
+### Registros antiguos de hosting web
+**SI tienes registros A antiguos** apuntando a otro servidor web (no email), elimina:
+- ❌ Registros **A** en **@** que apunten a otra IP (no las de GitHub)
+- ❌ Registros **CNAME** en **@** (no puede existir CNAME en @)
 
 ---
 

@@ -60,12 +60,28 @@ Valor:       juansoso666.github.io
 ## ⚡ ACCIONES RÁPIDAS
 
 1. **Accede a Arsys** → Mis Productos → jepeto.es → DNS
-2. **Elimina** registros A y CNAME antiguos en @
-3. **Añade** los 5 registros de la tabla de arriba
-4. **Guarda** todos los cambios
-5. **Espera** 1-2 horas
-6. **Verifica** en https://dnschecker.org/ → busca "jepeto.es"
-7. **Configura** GitHub Pages (Settings → Pages → Custom domain: jepeto.es)
+2. **NO elimines** registros MX, TXT, SPF, DMARC (son para email)
+3. **Solo elimina** registros A antiguos de hosting web (si existen)
+4. **Añade** los 5 registros de la tabla de arriba
+5. **Guarda** todos los cambios
+6. **Espera** 1-2 horas
+7. **Verifica** en https://dnschecker.org/ → busca "jepeto.es"
+8. **Configura** GitHub Pages (Settings → Pages → Custom domain: jepeto.es)
+
+---
+
+## 🔴 ERROR: "El nombre debe ser el nombre del dominio o un subdominio suyo"
+
+**CAUSA:** Pusiste el dominio completo en "Entrada DNS"
+
+❌ **INCORRECTO:** Entrada DNS = **www.jepeto.es**  
+✅ **CORRECTO:** Entrada DNS = **www**
+
+En el campo "Entrada DNS" solo pon:
+- **www** (para el registro CNAME)
+- **@** (para los registros A)
+
+**NO** pongas el dominio completo (.jepeto.es)
 
 ---
 
@@ -77,10 +93,28 @@ Si el campo "Entrada DNS" **no acepta @**, prueba:
 
 ---
 
-## ⚠️ SI CNAME DA ERROR
+## ⚠️ SI CNAME DA ERROR AL GUARDAR
 
-Si **juansoso666.github.io** da error, prueba:
+Si **juansoso666.github.io** da error al guardar, prueba:
 - Con punto al final: **juansoso666.github.io.**
+
+---
+
+## 🚨 SI TIENES EMAIL CONFIGURADO
+
+Si ya tienes registros para email (Zoho, Google Workspace, etc.):
+
+**NO TOQUES:**
+- ✅ MX (mx.zoho.eu, mx.serviciodecorreo.es, etc.)
+- ✅ TXT (zoho-verification, verificaciones)
+- ✅ SPF (v=spf1 include:...)
+- ✅ DMARC (_dmarc.jepeto.es)
+- ✅ CNAME de email (autoconfig, autodiscover, control)
+
+**SOLO AÑADE:**
+- Los 5 nuevos registros de la tabla arriba
+
+Email y web pueden coexistir sin problemas.
 
 ---
 
