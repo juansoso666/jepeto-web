@@ -58,6 +58,18 @@
     <a href="sobre-nosotros.html" class="text-secondary font-semibold">Nosotros</a>
     <a href="contacto.html" class="bg-secondary text-primary py-1 px-4 rounded hover:bg-yellow-400 transition">Presupuesto</a>
   </nav>
+  <button class="md:hidden text-3xl text-primary" id="menu-toggle" aria-label="Abrir menú de navegación">☰</button>
+  
+  <!-- Menú móvil -->
+  <nav id="mobile-menu" class="hidden flex-col bg-white text-center shadow-md md:hidden absolute top-16 left-0 w-full z-50">
+    <a href="index.html" class="py-3 border-b hover:bg-gray-100">Inicio</a>
+    <a href="servicios.html" class="py-3 border-b hover:bg-gray-100">Servicios</a>
+    <a href="proyectos.html" class="py-3 border-b hover:bg-gray-100">Proyectos</a>
+    <a href="galeria.html" class="py-3 border-b hover:bg-gray-100">Galería</a>
+    <a href="blog.html" class="py-3 border-b hover:bg-gray-100">Blog</a>
+    <a href="sobre-nosotros.html" class="py-3 border-b hover:bg-gray-100 text-secondary">Nosotros</a>
+    <a href="contacto.html" class="py-3 bg-secondary text-primary font-semibold">Presupuesto</a>
+  </nav>
 </header>
 
 <main class="max-w-6xl mx-auto p-8 space-y-12">
@@ -101,8 +113,17 @@
   </p>
 </footer>
 
-<a href="https://wa.me/34652565961" class="whatsapp-btn" target="_blank">
+<a href="https://wa.me/34652565961" class="whatsapp-btn" target="_blank" aria-label="Abrir chat de WhatsApp">
   <img src="/src/assets/icons/whatsapp.png" alt="WhatsApp" class="w-8 h-8">
 </a>
+
+<script>
+  // Menú móvil
+  const toggleBtn = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (toggleBtn && mobileMenu) {
+    toggleBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  }
+</script>
 </body>
 </html>
