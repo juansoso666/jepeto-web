@@ -194,5 +194,31 @@ Te ayudarán directamente.
 
 ---
 
+## 🚨 ¿ARSYS NO ACEPTA EL CNAME?
+
+Si Arsys **no te deja** añadir el registro CNAME (ni con "www" ni con "www.jepeto.es"):
+
+### ✅ SOLUCIÓN RÁPIDA
+
+**¡No te preocupes!** Puedes usar el sitio sin el CNAME:
+
+1. **Añade SOLO los 4 registros A** (en @)
+2. **NO añadas** el CNAME de www (lo omites)
+3. **Configura GitHub Pages** con dominio: **jepeto.es** (sin www)
+4. **GitHub** redirigirá automáticamente www.jepeto.es → jepeto.es
+
+**Ver guía completa:** [ARSYS_NO_ACEPTA_CNAME.md](./ARSYS_NO_ACEPTA_CNAME.md)
+
+### 📞 O Llama a Arsys
+
+**Teléfono:** 902 55 55 55
+
+Diles:
+> "Necesito añadir un CNAME para www apuntando a juansoso666.github.io 
+> pero el panel no me lo permite. ¿Pueden añadirlo ustedes?"
+
+---
+
 **Creado: 13 de Febrero 2026**  
+**Actualizado con solución para problemas de CNAME**  
 **Específico para tu caso con email Zoho ya configurado**
