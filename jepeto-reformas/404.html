@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página no encontrada | Jepeto Reformas</title>
+
+  <!-- SEO -->
+  <meta name="robots" content="noindex, nofollow">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/src/assets/images/favicon.png" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/src/styles/style.css" />
+
+  <style>
+    :root {
+      --color-primary: #004AAD;
+      --color-secondary: #FFD700;
+    }
+    .text-primary { color: var(--color-primary); }
+    .text-secondary { color: var(--color-secondary); }
+    .bg-primary { background-color: var(--color-primary); }
+    .bg-secondary { background-color: var(--color-secondary); }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+<!-- HEADER -->
+<header class="bg-white shadow-md">
+  <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+    <a href="/index.html" class="text-3xl font-extrabold text-primary">
+      Jepeto<span class="text-secondary">Reformas</span>
+    </a>
+    <nav class="hidden md:flex space-x-6 font-medium">
+      <a href="/index.html" class="hover:text-secondary transition">Inicio</a>
+      <a href="/servicios.html" class="hover:text-secondary transition">Servicios</a>
+      <a href="/contacto.html" class="bg-secondary text-primary py-2 px-4 rounded-lg hover:bg-yellow-400 transition">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main class="min-h-screen flex items-center justify-center px-4">
+  <div class="text-center max-w-2xl">
+    <h1 class="text-9xl font-extrabold text-primary mb-4">404</h1>
+    <h2 class="text-4xl font-bold text-gray-800 mb-6">Página no encontrada</h2>
+    <p class="text-lg text-gray-600 mb-8">
+      Lo sentimos, la página que buscas no existe o ha sido movida.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="/index.html" class="bg-primary text-white font-semibold py-3 px-8 rounded-lg hover:bg-cyan-700 transition">
+        Volver al Inicio
+      </a>
+      <a href="/contacto.html" class="bg-secondary text-primary font-semibold py-3 px-8 rounded-lg hover:bg-yellow-400 transition">
+        Contactar
+      </a>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-gray-300 text-center py-6">
+  <img src="/src/assets/images/logo.png" alt="Logo Jepeto Reformas" class="mx-auto mb-3 w-20 opacity-80">
+  <p>&copy; 2025 Jepeto Reformas • Granada • 
+    <a href="https://jepeto.es" class="underline hover:text-secondary transition">www.jepeto.es</a>
+  </p>
+</footer>
+
+</body>
+</html>

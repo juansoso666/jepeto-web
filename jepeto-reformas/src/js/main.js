@@ -23,27 +23,43 @@ if (menuBtn && nav) {
 const form = document.querySelector("form");
 if (form) {
   form.addEventListener("submit", (e) => {
-    e.preventDefault();
+    // Note: Form will submit to FormSubmit.co, so we allow default behavior
+    // Just validate before submission
+    
+    const nombre = form.querySelector('[name="nombre"]')?.value.trim();
+    const email = form.querySelector('[name="email"]')?.value.trim();
+    const mensaje = form.querySelector('[name="mensaje"]')?.value.trim();
 
-    const nombre = form.querySelector("#nombre").value.trim();
-    const email = form.querySelector("#email").value.trim();
-
-    if (!nombre || !email) {
-      alert("Por favor, completa los campos obligatorios.");
-      return;
+    if (!nombre || !email || !mensaje) {
+      e.preventDefault();
+      alert("Por favor, completa todos los campos obligatorios.");
+      return false;
     }
 
-    alert(`¡Gracias ${nombre}! Hemos recibido tu solicitud. Te contactaremos pronto.`);
-    form.reset();
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      e.preventDefault();
+      alert("Por favor, introduce un email válido.");
+      return false;
+    }
+
+    // Form is valid, allow submission to FormSubmit.co
+    return true;
   });
 }
 
 // ======== SCROLL SUAVE ========
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute("href")).scrollIntoView({
-      behavior: "smooth"
-    });
+    const targetId = this.getAttribute("href");
+    const targetElement = document.querySelector(targetId);
+    
+    if (targetElement) {
+      e.preventDefault();
+      targetElement.scrollIntoView({
+        behavior: "smooth"
+      });
+    }
   });
 });
