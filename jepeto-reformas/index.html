@@ -22,6 +22,43 @@
   <!-- Estilos locales -->
   <link rel="stylesheet" href="/src/styles/style.css">
 
+  <!-- Schema.org Structured Data for Local Business -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Jepeto Reformas",
+    "image": "https://jepeto.es/src/assets/images/logo.png",
+    "description": "Empresa de reformas integrales, cocinas, baños y mantenimiento en Granada",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle Henriquez de Jorquera 18, Piso 10C",
+      "addressLocality": "Granada",
+      "postalCode": "18011",
+      "addressCountry": "ES"
+    },
+    "telephone": "+34652565961",
+    "email": "info@jepeto.es",
+    "url": "https://jepeto.es",
+    "priceRange": "€€",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "37.1773",
+      "longitude": "-3.5986"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Granada"
+    }
+  }
+  </script>
+
   <!-- Colores -->
   <style>
     :root {
@@ -60,13 +97,13 @@
 <body class="bg-gray-50 text-gray-800 font-sans">
 
 <!-- HEADER -->
-<header class="bg-white shadow-md sticky top-0 z-50">
+<header class="bg-white shadow-md sticky top-0 z-50" role="banner">
   <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
     <a href="index.html" class="text-3xl font-extrabold text-primary">
       Jepeto<span class="text-secondary">Reformas</span>
     </a>
 
-    <nav class="hidden md:flex space-x-6 font-medium">
+    <nav class="hidden md:flex space-x-6 font-medium" role="navigation" aria-label="Navegación principal">
       <a href="#servicios" class="hover:text-secondary transition">Servicios</a>
       <a href="#proyectos" class="hover:text-secondary transition">Proyectos</a>
       <a href="galeria.html" class="hover:text-secondary transition">Galería</a>
@@ -79,7 +116,7 @@
   </div>
 
   <!-- Menú móvil -->
-  <nav id="mobile-menu" class="hidden flex-col bg-white text-center shadow-md md:hidden">
+  <nav id="mobile-menu" class="hidden flex-col bg-white text-center shadow-md md:hidden" role="navigation" aria-label="Menú móvil">
     <a href="#servicios" class="py-3 border-b hover:bg-gray-100">Servicios</a>
     <a href="#proyectos" class="py-3 border-b hover:bg-gray-100">Proyectos</a>
     <a href="galeria.html" class="py-3 border-b hover:bg-gray-100">Galería</a>
@@ -89,7 +126,7 @@
   </nav>
 </header>
 
-<main>
+<main role="main">
 
 <!-- HERO -->
 <section class="relative h-screen flex items-center justify-center text-center"
@@ -113,17 +150,17 @@
     <h2 class="text-4xl font-bold text-primary mb-12 fade-in">Nuestros Servicios</h2>
     <div class="grid md:grid-cols-3 gap-8">
       <div class="bg-gray-50 p-6 rounded-xl shadow-md fade-in">
-        <img src="/src/assets/images/servicios/reformas-integrales.png" alt="Reformas Integrales" class="w-full h-48 object-cover rounded-lg mb-4">
+        <img src="/src/assets/images/servicios/reformas-integrales.png" alt="Reformas Integrales" class="w-full h-48 object-cover rounded-lg mb-4" loading="lazy">
         <h3 class="text-xl font-bold text-gray-800 mb-2">Reformas Integrales</h3>
         <p class="text-gray-500">Renovación completa de viviendas y locales con acabados de alta calidad.</p>
       </div>
       <div class="bg-gray-50 p-6 rounded-xl shadow-md fade-in">
-        <img src="/src/assets/images/servicios/cocinas.png" alt="Cocinas y Baños" class="w-full h-48 object-cover rounded-lg mb-4">
+        <img src="/src/assets/images/servicios/cocinas.png" alt="Cocinas y Baños" class="w-full h-48 object-cover rounded-lg mb-4" loading="lazy">
         <h3 class="text-xl font-bold text-gray-800 mb-2">Cocinas y Baños</h3>
         <p class="text-gray-500">Diseños modernos, prácticos y adaptados a cada estilo de vida.</p>
       </div>
       <div class="bg-gray-50 p-6 rounded-xl shadow-md fade-in">
-        <img src="/src/assets/images/servicios/pintura.png" alt="Pintura y Acabados" class="w-full h-48 object-cover rounded-lg mb-4">
+        <img src="/src/assets/images/servicios/pintura.png" alt="Pintura y Acabados" class="w-full h-48 object-cover rounded-lg mb-4" loading="lazy">
         <h3 class="text-xl font-bold text-gray-800 mb-2">Pintura y Acabados</h3>
         <p class="text-gray-500">Pintura decorativa, pladur, electricidad y más con total garantía.</p>
       </div>
@@ -136,9 +173,9 @@
   <div class="max-w-7xl mx-auto px-4">
     <h2 class="text-4xl font-bold text-primary text-center mb-12 fade-in">Últimos Proyectos</h2>
     <div class="grid md:grid-cols-3 gap-6 fade-in">
-      <img src="/src/assets/images/proyectos/proyecto1.jpg" alt="Proyecto 1" class="w-full h-64 object-cover rounded-lg shadow-md">
-      <img src="/src/assets/images/proyectos/proyecto2.jpg" alt="Proyecto 2" class="w-full h-64 object-cover rounded-lg shadow-md">
-      <img src="/src/assets/images/proyectos/proyecto3.jpg" alt="Proyecto 3" class="w-full h-64 object-cover rounded-lg shadow-md">
+      <img src="/src/assets/images/proyectos/proyecto1.jpg" alt="Proyecto 1" class="w-full h-64 object-cover rounded-lg shadow-md" loading="lazy">
+      <img src="/src/assets/images/proyectos/proyecto2.jpg" alt="Proyecto 2" class="w-full h-64 object-cover rounded-lg shadow-md" loading="lazy">
+      <img src="/src/assets/images/proyectos/proyecto3.jpg" alt="Proyecto 3" class="w-full h-64 object-cover rounded-lg shadow-md" loading="lazy">
     </div>
   </div>
 </section>
@@ -156,11 +193,20 @@
     <div class="bg-gray-100 p-8 rounded-xl shadow-md">
       <form action="https://formsubmit.co/info@jepeto.es" method="POST">
         <input type="hidden" name="_next" value="https://jepeto.es/gracias.html">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="nombre" placeholder="Nombre" required class="w-full mb-4 p-3 rounded border focus:ring-2 focus:ring-secondary">
-        <input type="email" name="email" placeholder="Email" required class="w-full mb-4 p-3 rounded border focus:ring-2 focus:ring-secondary">
-        <textarea name="mensaje" rows="4" placeholder="Mensaje" required class="w-full mb-4 p-3 rounded border focus:ring-2 focus:ring-secondary"></textarea>
-        <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-cyan-700 transition">Enviar Mensaje</button>
+        <input type="hidden" name="_captcha" value="true">
+        <div class="mb-4">
+          <label for="nombre" class="block text-gray-700 font-medium mb-2">Nombre *</label>
+          <input id="nombre" type="text" name="nombre" placeholder="Tu nombre completo" required class="w-full p-3 rounded border focus:ring-2 focus:ring-secondary">
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700 font-medium mb-2">Email *</label>
+          <input id="email" type="email" name="email" placeholder="tu@email.com" required class="w-full p-3 rounded border focus:ring-2 focus:ring-secondary">
+        </div>
+        <div class="mb-4">
+          <label for="mensaje" class="block text-gray-700 font-medium mb-2">Mensaje *</label>
+          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos sobre tu proyecto..." required class="w-full p-3 rounded border focus:ring-2 focus:ring-secondary"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-cyan-700 transition font-semibold">Enviar Mensaje</button>
       </form>
     </div>
   </div>
@@ -169,7 +215,7 @@
 </main>
 
 <!-- FOOTER -->
-<footer class="bg-gray-900 text-gray-300 text-center py-6">
+<footer class="bg-gray-900 text-gray-300 text-center py-6" role="contentinfo">
   <img src="/src/assets/images/logo.png" alt="Logo Jepeto Reformas" class="mx-auto mb-3 w-20 opacity-80">
   <p>&copy; 2025 Jepeto Reformas • Granada • 
     <a href="https://jepeto.es" class="underline hover:text-secondary transition">www.jepeto.es</a>

@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contacto | Jepeto Reformas</title>
 
+  <!-- SEO -->
+  <meta name="description" content="Contacta con Jepeto Reformas en Granada. Solicita tu presupuesto sin compromiso. Teléfono, email y formulario de contacto disponibles.">
+  <meta name="keywords" content="contacto jepeto reformas, presupuesto reformas, reformas granada contacto">
+  <meta name="author" content="Jepeto Reformas">
+  <meta property="og:title" content="Contacto | Jepeto Reformas">
+  <meta property="og:description" content="Contacta con nosotros y solicita tu presupuesto sin compromiso">
+  <meta property="og:image" content="https://jepeto.es/src/assets/images/hero-bg.jpg">
+  <meta property="og:url" content="https://jepeto.es/contacto.html">
+
   <link rel="icon" type="image/png" href="/src/assets/images/favicon.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="/src/styles/style.css" />
@@ -51,6 +60,18 @@
     <a href="blog.html" class="hover:text-secondary transition">Blog</a>
     <a href="sobre-nosotros.html" class="hover:text-secondary transition">Nosotros</a>
   </nav>
+  <button class="md:hidden text-3xl text-primary" id="menu-toggle" aria-label="Abrir menú de navegación">☰</button>
+  
+  <!-- Menú móvil -->
+  <nav id="mobile-menu" class="hidden flex-col bg-white text-center shadow-md md:hidden absolute top-16 left-0 w-full z-50">
+    <a href="index.html" class="py-3 border-b hover:bg-gray-100">Inicio</a>
+    <a href="servicios.html" class="py-3 border-b hover:bg-gray-100">Servicios</a>
+    <a href="proyectos.html" class="py-3 border-b hover:bg-gray-100">Proyectos</a>
+    <a href="galeria.html" class="py-3 border-b hover:bg-gray-100">Galería</a>
+    <a href="blog.html" class="py-3 border-b hover:bg-gray-100">Blog</a>
+    <a href="sobre-nosotros.html" class="py-3 border-b hover:bg-gray-100">Nosotros</a>
+    <a href="contacto.html" class="py-3 bg-secondary text-primary font-semibold">Contacto</a>
+  </nav>
 </header>
 
 <main class="max-w-6xl mx-auto p-8 grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -65,11 +86,20 @@
   <div class="bg-gray-100 p-8 rounded-xl shadow-xl">
     <form action="https://formsubmit.co/info@jepeto.es" method="POST">
       <input type="hidden" name="_next" value="https://jepeto.es/gracias.html">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="text" name="nombre" placeholder="Nombre Completo" required class="w-full p-3 mb-4 border rounded focus:ring-secondary">
-      <input type="email" name="email" placeholder="Correo Electrónico" required class="w-full p-3 mb-4 border rounded focus:ring-secondary">
-      <textarea name="mensaje" rows="4" placeholder="Mensaje o consulta" required class="w-full p-3 mb-4 border rounded focus:ring-secondary"></textarea>
-      <button type="submit" class="w-full bg-primary text-white font-semibold py-3 rounded-lg hover:bg-cyan-700 transition">Enviar</button>
+      <input type="hidden" name="_captcha" value="true">
+      <div class="mb-4">
+        <label for="nombre" class="block text-gray-700 font-medium mb-2">Nombre Completo *</label>
+        <input id="nombre" type="text" name="nombre" placeholder="Tu nombre completo" required class="w-full p-3 border rounded focus:ring-2 focus:ring-secondary">
+      </div>
+      <div class="mb-4">
+        <label for="email" class="block text-gray-700 font-medium mb-2">Correo Electrónico *</label>
+        <input id="email" type="email" name="email" placeholder="tu@email.com" required class="w-full p-3 border rounded focus:ring-2 focus:ring-secondary">
+      </div>
+      <div class="mb-4">
+        <label for="mensaje" class="block text-gray-700 font-medium mb-2">Mensaje *</label>
+        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos sobre tu proyecto..." required class="w-full p-3 border rounded focus:ring-2 focus:ring-secondary"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-primary text-white font-semibold py-3 rounded-lg hover:bg-cyan-700 transition">Enviar Mensaje</button>
     </form>
   </div>
 </main>
@@ -85,5 +115,7 @@
    class="whatsapp-btn" target="_blank" aria-label="WhatsApp">
    <img src="/src/assets/icons/whatsapp.png" alt="WhatsApp" class="w-8 h-8">
 </a>
+
+<script src="/src/js/main.js"></script>
 </body>
 </html>
