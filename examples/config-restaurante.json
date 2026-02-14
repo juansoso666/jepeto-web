@@ -1,0 +1,297 @@
+{
+  "company": {
+    "name": "Sabor Mediterráneo",
+    "slogan": "Auténtica cocina mediterránea en el corazón de la ciudad",
+    "description": "Restaurante especializado en cocina mediterránea con ingredientes frescos y recetas tradicionales",
+    "founded": "2015",
+    "logo": "/src/assets/images/logo.png",
+    "favicon": "/src/assets/images/favicon.png"
+  },
+  "contact": {
+    "phone": "+34912345678",
+    "email": "info@sabormediterraneo.com",
+    "whatsapp": "+34912345678",
+    "address": {
+      "street": "Calle del Sabor 42",
+      "city": "Madrid",
+      "postalCode": "28015",
+      "country": "España",
+      "countryCode": "ES"
+    },
+    "coordinates": {
+      "latitude": "40.4168",
+      "longitude": "-3.7038"
+    },
+    "hours": {
+      "weekdays": "13:00 - 16:00 y 20:00 - 23:30",
+      "weekend": "13:00 - 23:30"
+    }
+  },
+  "social": {
+    "facebook": "https://facebook.com/sabormediterraneo",
+    "instagram": "https://instagram.com/sabormediterraneo",
+    "linkedin": "",
+    "twitter": "",
+    "youtube": ""
+  },
+  "seo": {
+    "siteUrl": "https://www.sabormediterraneo.com",
+    "keywords": "restaurante madrid, cocina mediterránea, comida española, tapas, paella, reservas restaurante",
+    "author": "Sabor Mediterráneo",
+    "language": "es",
+    "locale": "es_ES"
+  },
+  "theme": {
+    "primaryColor": "#d97706",
+    "secondaryColor": "#b45309",
+    "accentColor": "#059669",
+    "textColor": "#1f2937",
+    "backgroundColor": "#ffffff",
+    "headerBg": "#ffffff",
+    "footerBg": "#1f2937"
+  },
+  "pages": {
+    "index": {
+      "title": "Sabor Mediterráneo | Restaurante en Madrid",
+      "description": "Disfruta de auténtica cocina mediterránea con ingredientes frescos. Reserva tu mesa en el mejor restaurante de Madrid.",
+      "heroImage": "/src/assets/images/hero-restaurant.jpg",
+      "heroTitle": "Sabores que enamoran",
+      "heroSubtitle": "Vive la experiencia mediterránea con cada bocado",
+      "ctaText": "Reservar Mesa",
+      "ctaLink": "/contacto.html"
+    },
+    "servicios": {
+      "title": "Nuestros Servicios | Sabor Mediterráneo",
+      "description": "Menú del día, carta, eventos privados y catering para todo tipo de ocasiones",
+      "headerTitle": "Nuestros Servicios",
+      "headerSubtitle": "Experiencias gastronómicas para todos los momentos"
+    },
+    "proyectos": {
+      "title": "Platos Destacados | Sabor Mediterráneo",
+      "description": "Descubre nuestros platos estrella y especialidades de la casa",
+      "headerTitle": "Platos Destacados",
+      "headerSubtitle": "Lo mejor de nuestra cocina"
+    },
+    "galeria": {
+      "title": "Galería | Sabor Mediterráneo",
+      "description": "Imágenes de nuestros platos, ambiente y eventos especiales",
+      "headerTitle": "Galería de Imágenes",
+      "headerSubtitle": "Un festín para los ojos"
+    },
+    "blog": {
+      "title": "Blog | Sabor Mediterráneo",
+      "description": "Recetas, consejos culinarios y novedades del restaurante",
+      "headerTitle": "Blog Gastronómico",
+      "headerSubtitle": "Historias y secretos de nuestra cocina"
+    },
+    "sobreNosotros": {
+      "title": "Sobre Nosotros | Sabor Mediterráneo",
+      "description": "Conoce nuestra historia, filosofía y equipo de cocina",
+      "headerTitle": "Nuestra Historia",
+      "headerSubtitle": "Pasión por la cocina desde 2015"
+    },
+    "contacto": {
+      "title": "Reservas | Sabor Mediterráneo",
+      "description": "Reserva tu mesa o solicita información. Estamos para servirte",
+      "headerTitle": "Reserva tu Mesa",
+      "headerSubtitle": "Te esperamos con los brazos abiertos",
+      "formSubmitUrl": "https://formsubmit.co/info@sabormediterraneo.com",
+      "formSuccessPage": "/gracias.html"
+    }
+  },
+  "services": [
+    {
+      "id": "menu-dia",
+      "name": "Menú del Día",
+      "description": "Menú completo con primero, segundo, postre y bebida a precio especial",
+      "icon": "🍽️",
+      "image": "/src/assets/images/servicios/menu-dia.jpg",
+      "features": [
+        "Cambia diariamente",
+        "Ingredientes de temporada",
+        "Incluye pan y postre",
+        "Opción vegetariana"
+      ]
+    },
+    {
+      "id": "carta",
+      "name": "Carta & Especialidades",
+      "description": "Amplia carta con lo mejor de la cocina mediterránea",
+      "icon": "📖",
+      "image": "/src/assets/images/servicios/carta.jpg",
+      "features": [
+        "Pescados frescos",
+        "Carnes a la brasa",
+        "Arroces y paellas",
+        "Postres artesanales"
+      ]
+    },
+    {
+      "id": "eventos",
+      "name": "Eventos Privados",
+      "description": "Organiza tu evento con menús personalizados para grupos",
+      "icon": "🎉",
+      "image": "/src/assets/images/servicios/eventos.jpg",
+      "features": [
+        "Hasta 80 personas",
+        "Menús personalizados",
+        "Decoración incluida",
+        "Servicio de DJ opcional"
+      ]
+    },
+    {
+      "id": "catering",
+      "name": "Catering",
+      "description": "Llevamos nuestra cocina a tu evento o celebración",
+      "icon": "🚚",
+      "image": "/src/assets/images/servicios/catering.jpg",
+      "features": [
+        "Servicio a domicilio",
+        "Menús adaptados",
+        "Personal incluido",
+        "Material de servicio"
+      ]
+    },
+    {
+      "id": "tapas",
+      "name": "Tapas & Pinchos",
+      "description": "Gran variedad de tapas y pinchos para compartir",
+      "icon": "🍢",
+      "image": "/src/assets/images/servicios/tapas.jpg",
+      "features": [
+        "20+ variedades",
+        "Raciones generosas",
+        "Perfecto para grupos",
+        "Maridaje con vinos"
+      ]
+    },
+    {
+      "id": "reservas",
+      "name": "Reservas Online",
+      "description": "Reserva tu mesa de forma rápida y sencilla",
+      "icon": "📱",
+      "image": "/src/assets/images/servicios/reservas.jpg",
+      "features": [
+        "Confirmación inmediata",
+        "Sin comisiones",
+        "Modificar fácilmente",
+        "Recordatorio automático"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "paella-valenciana",
+      "name": "Paella Valenciana Tradicional",
+      "description": "Nuestra paella estrella con receta tradicional y ingredientes de primera",
+      "image": "/src/assets/images/proyectos/paella.jpg",
+      "category": "Platos Principales",
+      "year": "2024",
+      "duration": "45 min preparación",
+      "features": [
+        "Arroz bomba",
+        "Pollo de corral",
+        "Verduras frescas",
+        "Azafrán auténtico"
+      ]
+    },
+    {
+      "id": "pulpo-gallega",
+      "name": "Pulpo a la Gallega",
+      "description": "Pulpo tierno con paprika y aceite de oliva virgen extra",
+      "image": "/src/assets/images/proyectos/pulpo.jpg",
+      "category": "Especialidades",
+      "year": "2024",
+      "duration": "Disponible siempre",
+      "features": [
+        "Pulpo fresco",
+        "Cocido al punto",
+        "Paprika de La Vera",
+        "Aceite premium"
+      ]
+    },
+    {
+      "id": "postre-tiramisu",
+      "name": "Tiramisú Casero",
+      "description": "Postre italiano elaborado diariamente con ingredientes premium",
+      "image": "/src/assets/images/proyectos/tiramisu.jpg",
+      "category": "Postres",
+      "year": "2024",
+      "duration": "Elaboración diaria",
+      "features": [
+        "Receta original",
+        "Mascarpone italiano",
+        "Café de especialidad",
+        "Presentación elegante"
+      ]
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Laura Martínez",
+      "role": "Cliente Regular",
+      "text": "El mejor restaurante de la zona. La paella está increíble y el servicio es excepcional. Siempre volvemos.",
+      "rating": 5,
+      "image": ""
+    },
+    {
+      "id": 2,
+      "name": "Carlos Ruiz",
+      "role": "Evento Corporativo",
+      "text": "Organizamos nuestra cena de empresa y fue un éxito total. Comida deliciosa y atención impecable.",
+      "rating": 5,
+      "image": ""
+    },
+    {
+      "id": 3,
+      "name": "Ana y Pedro",
+      "role": "Celebración Aniversario",
+      "text": "Celebramos nuestro aniversario aquí y fue una velada perfecta. Ambiente romántico y cocina exquisita.",
+      "rating": 5,
+      "image": ""
+    }
+  ],
+  "blog": [
+    {
+      "id": 1,
+      "titulo": "Los Secretos de una Paella Perfecta",
+      "descripcion": "Descubre los trucos y consejos para preparar la paella más auténtica",
+      "imagen": "/src/assets/images/blog/paella-tips.jpg",
+      "url": "#",
+      "fecha": "2024-02-10",
+      "autor": "Chef Juan",
+      "categoria": "Recetas"
+    },
+    {
+      "id": 2,
+      "titulo": "Maridaje: Vinos y Pescados",
+      "descripcion": "Guía completa para elegir el vino perfecto según el tipo de pescado",
+      "imagen": "/src/assets/images/blog/vinos.jpg",
+      "url": "#",
+      "fecha": "2024-02-05",
+      "autor": "Sumiller María",
+      "categoria": "Vinos"
+    },
+    {
+      "id": 3,
+      "titulo": "Temporada de Productos de Mar",
+      "descripcion": "Los mejores productos del mar en cada estación del año",
+      "imagen": "/src/assets/images/blog/productos-mar.jpg",
+      "url": "#",
+      "fecha": "2024-01-28",
+      "autor": "Chef Juan",
+      "categoria": "Ingredientes"
+    }
+  ],
+  "features": {
+    "showWhatsappButton": true,
+    "showCookieConsent": true,
+    "enableBlog": true,
+    "enableTestimonials": true,
+    "enableGallery": true,
+    "enableProjects": true,
+    "googleAnalyticsId": "",
+    "facebookPixelId": ""
+  }
+}

@@ -1,0 +1,297 @@
+{
+  "company": {
+    "name": "Jepeto Reformas",
+    "slogan": "Transformamos espacios con calidad y compromiso",
+    "description": "Empresa de reformas integrales, cocinas, baños y mantenimiento en Granada",
+    "founded": "2020",
+    "logo": "/src/assets/images/logo.png",
+    "favicon": "/src/assets/images/favicon.png"
+  },
+  "contact": {
+    "phone": "+34652565961",
+    "email": "info@jepeto.es",
+    "whatsapp": "+34652565961",
+    "address": {
+      "street": "Calle Henriquez de Jorquera 18, Piso 10C",
+      "city": "Granada",
+      "postalCode": "18011",
+      "country": "España",
+      "countryCode": "ES"
+    },
+    "coordinates": {
+      "latitude": "37.1773",
+      "longitude": "-3.5985"
+    },
+    "hours": {
+      "weekdays": "09:00 - 18:00",
+      "weekend": "Cerrado"
+    }
+  },
+  "social": {
+    "facebook": "https://facebook.com/jepetoreformas",
+    "instagram": "https://instagram.com/jepetoreformas",
+    "linkedin": "",
+    "twitter": "",
+    "youtube": ""
+  },
+  "seo": {
+    "siteUrl": "https://jepeto.es",
+    "keywords": "reformas granada, mantenimiento, albañilería, cocinas, baños, pintura, jepeto reformas",
+    "author": "Jepeto Reformas",
+    "language": "es",
+    "locale": "es_ES"
+  },
+  "theme": {
+    "primaryColor": "#10b981",
+    "secondaryColor": "#059669",
+    "accentColor": "#f59e0b",
+    "textColor": "#1f2937",
+    "backgroundColor": "#ffffff",
+    "headerBg": "#ffffff",
+    "footerBg": "#1f2937"
+  },
+  "pages": {
+    "index": {
+      "title": "Jepeto Reformas | Reformas en Granada",
+      "description": "Reformas integrales, cocinas, baños y mantenimiento en Granada. Calidad, profesionalidad y compromiso en cada detalle.",
+      "heroImage": "/src/assets/images/hero-bg.jpg",
+      "heroTitle": "Reformamos tu hogar con calidad y compromiso",
+      "heroSubtitle": "Especialistas en reformas integrales, cocinas, baños y mantenimiento en Granada",
+      "ctaText": "Pide tu presupuesto",
+      "ctaLink": "/contacto.html"
+    },
+    "servicios": {
+      "title": "Nuestros Servicios | Jepeto Reformas",
+      "description": "Ofrecemos servicios de reformas integrales, cocinas, baños, pintura y mantenimiento en Granada",
+      "headerTitle": "Nuestros Servicios",
+      "headerSubtitle": "Soluciones completas para tu hogar"
+    },
+    "proyectos": {
+      "title": "Proyectos Realizados | Jepeto Reformas",
+      "description": "Descubre nuestros proyectos de reformas en Granada. Trabajos de calidad con resultados excepcionales",
+      "headerTitle": "Proyectos Realizados",
+      "headerSubtitle": "Cada proyecto es una historia de transformación"
+    },
+    "galeria": {
+      "title": "Galería | Jepeto Reformas",
+      "description": "Galería de imágenes de nuestros trabajos de reformas en Granada",
+      "headerTitle": "Galería de Trabajos",
+      "headerSubtitle": "Visualiza la calidad de nuestros proyectos"
+    },
+    "blog": {
+      "title": "Blog | Jepeto Reformas",
+      "description": "Consejos, ideas y tendencias sobre reformas, decoración y mantenimiento del hogar",
+      "headerTitle": "Blog & Consejos",
+      "headerSubtitle": "Ideas y tendencias para tu hogar"
+    },
+    "sobreNosotros": {
+      "title": "Sobre Nosotros | Jepeto Reformas",
+      "description": "Conoce nuestra historia, valores y equipo profesional de reformas en Granada",
+      "headerTitle": "Sobre Nosotros",
+      "headerSubtitle": "Más de 15 años transformando espacios"
+    },
+    "contacto": {
+      "title": "Contacto | Jepeto Reformas",
+      "description": "Contacta con nosotros para tu proyecto de reforma. Presupuesto sin compromiso",
+      "headerTitle": "Contáctanos",
+      "headerSubtitle": "Estamos aquí para ayudarte con tu proyecto",
+      "formSubmitUrl": "https://formsubmit.co/info@jepeto.es",
+      "formSuccessPage": "/gracias.html"
+    }
+  },
+  "services": [
+    {
+      "id": "reformas-integrales",
+      "name": "Reformas Integrales",
+      "description": "Transformamos tu hogar completamente, desde el diseño hasta la ejecución final",
+      "icon": "🏠",
+      "image": "/src/assets/images/servicios/reformas-integrales.jpg",
+      "features": [
+        "Diseño personalizado",
+        "Gestión de licencias",
+        "Coordinación de gremios",
+        "Garantía de calidad"
+      ]
+    },
+    {
+      "id": "cocinas",
+      "name": "Cocinas",
+      "description": "Diseño y reforma de cocinas modernas y funcionales adaptadas a tus necesidades",
+      "icon": "🍳",
+      "image": "/src/assets/images/servicios/cocinas.jpg",
+      "features": [
+        "Diseño 3D",
+        "Mobiliario a medida",
+        "Electrodomésticos de calidad",
+        "Instalaciones certificadas"
+      ]
+    },
+    {
+      "id": "banos",
+      "name": "Baños",
+      "description": "Renueva tu baño con estilo y funcionalidad. Soluciones completas de fontanería y diseño",
+      "icon": "🚿",
+      "image": "/src/assets/images/servicios/banos.jpg",
+      "features": [
+        "Diseño moderno",
+        "Mamparas y sanitarios",
+        "Grifería de calidad",
+        "Impermeabilización"
+      ]
+    },
+    {
+      "id": "pintura",
+      "name": "Pintura y Decoración",
+      "description": "Dale un nuevo aire a tus espacios con acabados profesionales y colores personalizados",
+      "icon": "🎨",
+      "image": "/src/assets/images/servicios/pintura.jpg",
+      "features": [
+        "Asesoramiento en colores",
+        "Pinturas ecológicas",
+        "Acabados especiales",
+        "Limpieza garantizada"
+      ]
+    },
+    {
+      "id": "albanileria",
+      "name": "Albañilería",
+      "description": "Trabajos de construcción y reparación con los mejores materiales y profesionales",
+      "icon": "🧱",
+      "image": "/src/assets/images/servicios/albanileria.jpg",
+      "features": [
+        "Tabiquería",
+        "Solados y alicatados",
+        "Reparaciones",
+        "Obra nueva"
+      ]
+    },
+    {
+      "id": "mantenimiento",
+      "name": "Mantenimiento",
+      "description": "Servicio de mantenimiento integral para tu hogar o negocio",
+      "icon": "🔧",
+      "image": "/src/assets/images/servicios/mantenimiento.jpg",
+      "features": [
+        "Electricidad",
+        "Fontanería",
+        "Carpintería",
+        "Reparaciones urgentes"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proyecto-1",
+      "name": "Reforma Integral Vivienda Centro Granada",
+      "description": "Reforma completa de vivienda de 90m² en el centro de Granada",
+      "image": "/src/assets/images/proyectos/proyecto1.jpg",
+      "category": "Reformas Integrales",
+      "year": "2024",
+      "duration": "2 meses",
+      "features": [
+        "Nueva distribución",
+        "Cocina completa",
+        "2 baños renovados",
+        "Suelos y pintura"
+      ]
+    },
+    {
+      "id": "proyecto-2",
+      "name": "Cocina Moderna Estilo Nórdico",
+      "description": "Diseño y ejecución de cocina moderna con isla central",
+      "image": "/src/assets/images/proyectos/proyecto2.jpg",
+      "category": "Cocinas",
+      "year": "2024",
+      "duration": "3 semanas",
+      "features": [
+        "Isla con barra",
+        "Electrodomésticos integrados",
+        "Iluminación LED",
+        "Encimera de cuarzo"
+      ]
+    },
+    {
+      "id": "proyecto-3",
+      "name": "Baño Principal Suite",
+      "description": "Reforma de baño principal con ducha y bañera",
+      "image": "/src/assets/images/proyectos/proyecto3.jpg",
+      "category": "Baños",
+      "year": "2023",
+      "duration": "2 semanas",
+      "features": [
+        "Ducha efecto lluvia",
+        "Bañera hidromasaje",
+        "Doble lavabo",
+        "Calefacción radiante"
+      ]
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "María González",
+      "role": "Cliente Reforma Integral",
+      "text": "Excelente trabajo y profesionalidad. Reformaron mi piso completo y el resultado superó mis expectativas. Muy recomendables.",
+      "rating": 5,
+      "image": ""
+    },
+    {
+      "id": 2,
+      "name": "Carlos Fernández",
+      "role": "Cliente Cocina",
+      "text": "Muy contentos con la reforma de nuestra cocina. El equipo fue puntual, limpio y el acabado es perfecto.",
+      "rating": 5,
+      "image": ""
+    },
+    {
+      "id": 3,
+      "name": "Ana Martínez",
+      "role": "Cliente Baño",
+      "text": "Profesionales de principio a fin. Nos asesoraron en todo momento y cumplieron los plazos. Volveremos a contar con ellos.",
+      "rating": 5,
+      "image": ""
+    }
+  ],
+  "blog": [
+    {
+      "id": 1,
+      "titulo": "5 Ideas para Reformar tu Cocina",
+      "descripcion": "Optimiza espacio y estilo con las últimas tendencias en cocinas modernas.",
+      "imagen": "/src/assets/images/blog/cocina.jpg",
+      "url": "#",
+      "fecha": "2024-01-15",
+      "autor": "Equipo Jepeto",
+      "categoria": "Cocinas"
+    },
+    {
+      "id": 2,
+      "titulo": "Reformas Integrales vs. Parciales",
+      "descripcion": "Descubre cuál opción se adapta mejor a tus necesidades y presupuesto.",
+      "imagen": "/src/assets/images/blog/reformas.jpg",
+      "url": "#",
+      "fecha": "2024-01-10",
+      "autor": "Equipo Jepeto",
+      "categoria": "Consejos"
+    },
+    {
+      "id": 3,
+      "titulo": "Decoración Moderna para Salones",
+      "descripcion": "Ideas prácticas para transformar tu salón en un espacio moderno y acogedor.",
+      "imagen": "/src/assets/images/blog/decoracion.jpg",
+      "url": "#",
+      "fecha": "2024-01-05",
+      "autor": "Equipo Jepeto",
+      "categoria": "Decoración"
+    }
+  ],
+  "features": {
+    "showWhatsappButton": true,
+    "showCookieConsent": false,
+    "enableBlog": true,
+    "enableTestimonials": true,
+    "enableGallery": true,
+    "enableProjects": true,
+    "googleAnalyticsId": "",
+    "facebookPixelId": ""
+  }
+}
