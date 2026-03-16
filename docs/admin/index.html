@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Admin | Jepeto Reformas</title>
+  <link rel="icon" type="image/png" href="../src/assets/images/favicon.png" />
+  <style>
+    /* ── Variables ── */
+    :root {
+      --blue:   #004AAD;
+      --yellow: #FFD700;
+      --bg:     #f1f5f9;
+      --card:   #ffffff;
+      --text:   #1e293b;
+      --muted:  #64748b;
+      --border: #e2e8f0;
+      --green:  #22c55e;
+      --red:    #ef4444;
+      --sidebar-w: 256px;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Segoe UI',system-ui,sans-serif; background:var(--bg); color:var(--text); }
+
+    /* ── Login ── */
+    #login-screen {
+      min-height:100vh; display:flex; align-items:center; justify-content:center;
+      background: linear-gradient(135deg, var(--blue) 0%, #0066cc 100%);
+    }
+    .login-card {
+      background:var(--card); border-radius:1rem; padding:2.5rem 2rem;
+      width:100%; max-width:380px; box-shadow:0 20px 60px rgba(0,0,0,.3);
+    }
+    .login-card .logo { text-align:center; margin-bottom:2rem; }
+    .login-card .logo span { font-size:2rem; font-weight:800; color:var(--blue); }
+    .login-card .logo span b { color:var(--yellow); }
+    .login-card h2 { text-align:center; font-size:1.1rem; color:var(--muted); margin-bottom:1.5rem; }
+    .login-card label { display:block; font-size:.85rem; font-weight:600; margin-bottom:.4rem; color:var(--text); }
+    .login-card input[type=password] {
+      width:100%; border:2px solid var(--border); border-radius:.5rem;
+      padding:.75rem 1rem; font-size:1rem; margin-bottom:1rem;
+      transition:border .2s;
+    }
+    .login-card input[type=password]:focus { border-color:var(--blue); outline:none; }
+    .btn-login {
+      width:100%; background:var(--blue); color:#fff; border:none;
+      border-radius:.5rem; padding:.85rem; font-size:1rem; font-weight:700;
+      cursor:pointer; transition:background .2s;
+    }
+    .btn-login:hover { background:#003a8c; }
+    #login-error { color:var(--red); font-size:.875rem; text-align:center; margin-top:.75rem; display:none; }
+
+    /* ── Layout ── */
+    #app { display:none; min-height:100vh; }
+
+    /* ── Sidebar ── */
+    #sidebar {
+      position:fixed; top:0; left:0; bottom:0; width:var(--sidebar-w);
+      background:var(--blue); color:#fff; display:flex; flex-direction:column;
+      z-index:100; overflow-y:auto;
+    }
+    #sidebar .brand { padding:1.25rem 1rem; border-bottom:1px solid rgba(255,255,255,.15); }
+    #sidebar .brand span { font-size:1.3rem; font-weight:800; }
+    #sidebar .brand span b { color:var(--yellow); }
+    #sidebar .brand small { display:block; color:rgba(255,255,255,.6); font-size:.75rem; margin-top:.15rem; }
+    #sidebar nav { flex:1; padding:.75rem .5rem; }
+    #sidebar nav a {
+      display:flex; align-items:center; gap:.6rem; padding:.7rem .85rem;
+      border-radius:.5rem; color:rgba(255,255,255,.85); font-weight:500;
+      text-decoration:none; transition:background .15s; cursor:pointer; margin-bottom:.15rem;
+    }
+    #sidebar nav a:hover, #sidebar nav a.active { background:rgba(255,255,255,.18); color:#fff; }
+    #sidebar nav a .icon { font-size:1.1rem; width:1.3rem; text-align:center; }
+    #sidebar .sidebar-footer { padding:1rem; border-top:1px solid rgba(255,255,255,.15); }
+    #sidebar .status-dot {
+      display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:.4rem; vertical-align:middle;
+    }
+    #sidebar .status-dot.ok { background:var(--green); }
+    #sidebar .status-dot.warn { background:var(--yellow); }
+    .btn-logout {
+      width:100%; background:rgba(255,255,255,.15); color:#fff; border:none;
+      border-radius:.5rem; padding:.6rem; font-size:.9rem; font-weight:600; cursor:pointer; transition:background .2s;
+    }
+    .btn-logout:hover { background:rgba(255,255,255,.28); }
+
+    /* ── Main ── */
+    #main {
+      margin-left:var(--sidebar-w); padding:2rem;
+      min-height:100vh;
+    }
+    .section { display:none; }
+    .section.active { display:block; }
+    .page-title { font-size:1.6rem; font-weight:800; color:var(--blue); margin-bottom:1.5rem; }
+    .page-subtitle { color:var(--muted); font-size:.95rem; margin-top:-.9rem; margin-bottom:1.5rem; }
+
+    /* ── Cards ── */
+    .card {
+      background:var(--card); border-radius:.75rem;
+      box-shadow:0 1px 4px rgba(0,0,0,.07); padding:1.5rem; margin-bottom:1rem;
+    }
+    .card-title { font-weight:700; font-size:1rem; color:var(--blue); margin-bottom:1rem; }
+
+    /* ── Dashboard stats ── */
+    .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin-bottom:1.5rem; }
+    .stat-card {
+      background:var(--card); border-radius:.75rem; padding:1.25rem 1.5rem;
+      box-shadow:0 1px 4px rgba(0,0,0,.07); display:flex; align-items:center; gap:1rem;
+    }
+    .stat-card .stat-icon { font-size:2rem; }
+    .stat-card .stat-val { font-size:1.6rem; font-weight:800; color:var(--blue); }
+    .stat-card .stat-lbl { font-size:.8rem; color:var(--muted); }
+
+    /* ── Image sections ── */
+    .img-section { margin-bottom:1.5rem; }
+    .img-section-header {
+      display:flex; align-items:center; justify-content:space-between;
+      background:var(--card); border-radius:.75rem; padding:1rem 1.25rem;
+      cursor:pointer; box-shadow:0 1px 4px rgba(0,0,0,.07);
+      border-left:4px solid var(--blue); margin-bottom:.5rem;
+      user-select:none;
+    }
+    .img-section-header:hover { box-shadow:0 2px 8px rgba(0,0,0,.1); }
+    .img-section-header h3 { font-size:1.05rem; font-weight:700; color:var(--blue); }
+    .img-section-header .chevron { color:var(--muted); transition:transform .2s; font-size:1.1rem; }
+    .img-section-header.open .chevron { transform:rotate(180deg); }
+    .img-grid {
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+      gap:1rem; padding:.25rem 0; display:none;
+    }
+    .img-grid.open { display:grid; }
+
+    /* ── Image card ── */
+    .img-card {
+      background:var(--card); border-radius:.75rem; padding:1rem;
+      box-shadow:0 1px 4px rgba(0,0,0,.07); display:flex; flex-direction:column; gap:.75rem;
+    }
+    .img-card-label { font-weight:700; font-size:.9rem; color:var(--text); }
+    .img-card-path { font-size:.75rem; color:var(--muted); background:var(--bg); border-radius:.375rem; padding:.35rem .6rem; word-break:break-all; }
+    .img-preview {
+      width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:.5rem;
+      background:#e2e8f0; border:1px solid var(--border);
+    }
+    .drop-zone {
+      border:2px dashed var(--border); border-radius:.5rem; padding:1.25rem;
+      text-align:center; cursor:pointer; transition:all .2s; background:var(--bg);
+      position:relative;
+    }
+    .drop-zone:hover, .drop-zone.dragover { border-color:var(--blue); background:#eff6ff; }
+    .drop-zone input[type=file] { position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%; }
+    .drop-zone .dz-text { font-size:.85rem; color:var(--muted); pointer-events:none; }
+    .drop-zone .dz-text b { color:var(--blue); }
+    .new-preview-wrap { display:none; }
+    .new-preview-wrap .new-preview {
+      width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:.5rem;
+      border:2px solid var(--green);
+    }
+    .new-preview-wrap .preview-label { font-size:.75rem; color:var(--green); font-weight:600; margin-top:.25rem; }
+    .btn-save {
+      background:var(--blue); color:#fff; border:none; border-radius:.5rem;
+      padding:.6rem .9rem; font-size:.875rem; font-weight:700; cursor:pointer; transition:background .2s;
+      display:flex; align-items:center; gap:.4rem; justify-content:center;
+    }
+    .btn-save:hover { background:#003a8c; }
+    .btn-save:disabled { background:#94a3b8; cursor:not-allowed; }
+    .save-status { font-size:.8rem; font-weight:600; text-align:center; display:none; }
+    .save-status.ok { color:var(--green); }
+    .save-status.err { color:var(--red); }
+
+    /* ── Blog editor ── */
+    .blog-post-card { background:var(--card); border-radius:.75rem; padding:1.25rem; box-shadow:0 1px 4px rgba(0,0,0,.07); margin-bottom:1rem; border-left:4px solid var(--yellow); }
+    .blog-field { margin-bottom:.75rem; }
+    .blog-field label { display:block; font-size:.8rem; font-weight:600; color:var(--muted); margin-bottom:.3rem; text-transform:uppercase; letter-spacing:.04em; }
+    .blog-field input, .blog-field textarea {
+      width:100%; border:1.5px solid var(--border); border-radius:.375rem;
+      padding:.6rem .8rem; font-size:.9rem; transition:border .2s; font-family:inherit;
+    }
+    .blog-field input:focus, .blog-field textarea:focus { border-color:var(--blue); outline:none; }
+    .blog-actions { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.75rem; }
+    .btn-danger { background:#fee2e2; color:var(--red); border:none; border-radius:.5rem; padding:.5rem .9rem; font-size:.85rem; font-weight:700; cursor:pointer; transition:background .2s; }
+    .btn-danger:hover { background:#fecaca; }
+    .btn-add { background:#dcfce7; color:#166534; border:none; border-radius:.5rem; padding:.6rem 1.1rem; font-size:.9rem; font-weight:700; cursor:pointer; transition:background .2s; }
+    .btn-add:hover { background:#bbf7d0; }
+    .btn-primary { background:var(--blue); color:#fff; border:none; border-radius:.5rem; padding:.6rem 1.1rem; font-size:.9rem; font-weight:700; cursor:pointer; transition:background .2s; }
+    .btn-primary:hover { background:#003a8c; }
+    .btn-secondary { background:#f1f5f9; color:var(--text); border:none; border-radius:.5rem; padding:.6rem 1.1rem; font-size:.9rem; font-weight:700; cursor:pointer; transition:background .2s; }
+    .btn-secondary:hover { background:#e2e8f0; }
+
+    /* ── Settings ── */
+    .settings-field { margin-bottom:1.25rem; }
+    .settings-field label { display:block; font-size:.875rem; font-weight:600; margin-bottom:.4rem; }
+    .settings-field input {
+      width:100%; border:2px solid var(--border); border-radius:.5rem;
+      padding:.7rem 1rem; font-size:.9rem; font-family:monospace; transition:border .2s;
+    }
+    .settings-field input:focus { border-color:var(--blue); outline:none; }
+    .settings-help { font-size:.8rem; color:var(--muted); margin-top:.35rem; }
+    .settings-help a { color:var(--blue); }
+
+    /* ── Mode badge ── */
+    .mode-badge {
+      display:inline-flex; align-items:center; gap:.4rem; padding:.35rem .75rem;
+      border-radius:999px; font-size:.78rem; font-weight:700;
+    }
+    .mode-badge.github { background:#dbeafe; color:#1d4ed8; }
+    .mode-badge.local  { background:#dcfce7; color:#166534; }
+    .mode-badge.dl     { background:#fef9c3; color:#854d0e; }
+
+    /* ── Instructions ── */
+    .step { display:flex; gap:1rem; margin-bottom:1.25rem; }
+    .step-num { flex-shrink:0; width:2rem; height:2rem; border-radius:50%; background:var(--blue); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.9rem; }
+    .step-body h4 { font-weight:700; margin-bottom:.25rem; }
+    .step-body p, .step-body code { font-size:.9rem; color:var(--muted); }
+    .step-body code { background:var(--bg); padding:.15rem .4rem; border-radius:.25rem; font-family:monospace; color:var(--text); }
+    .tip-box { background:#fffbeb; border:1px solid #fde68a; border-radius:.5rem; padding:.9rem 1rem; font-size:.875rem; color:#92400e; margin-top:.5rem; }
+
+    /* ── Toast ── */
+    #toast-container { position:fixed; bottom:1.5rem; right:1.5rem; z-index:9999; display:flex; flex-direction:column; gap:.5rem; }
+    .toast {
+      background:var(--card); border-radius:.625rem; padding:.85rem 1.25rem;
+      box-shadow:0 4px 20px rgba(0,0,0,.15); font-size:.9rem; font-weight:600;
+      display:flex; align-items:center; gap:.6rem; min-width:240px;
+      animation:slideIn .25s ease; border-left:4px solid var(--blue);
+    }
+    .toast.success { border-left-color:var(--green); }
+    .toast.error   { border-left-color:var(--red); }
+    .toast.warn    { border-left-color:var(--yellow); }
+    @keyframes slideIn { from { transform:translateX(120%); opacity:0; } to { transform:translateX(0); opacity:1; } }
+
+    /* ── Spinner ── */
+    .spinner { display:inline-block; width:1rem; height:1rem; border:2px solid rgba(255,255,255,.4); border-top-color:#fff; border-radius:50%; animation:spin .6s linear infinite; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+
+    /* ── Responsive ── */
+    @media(max-width:768px) {
+      #sidebar { width:100%; height:auto; position:relative; }
+      #main { margin-left:0; }
+      #app { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════ LOGIN ══════════════════════════ -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="logo">
+      <span>Jepeto<b>Reformas</b></span>
+      <p style="font-size:.85rem;color:#64748b;margin-top:.4rem;">Panel de Administración</p>
+    </div>
+    <h2>🔑 Acceso seguro</h2>
+    <label for="pwd">Contraseña</label>
+    <input type="password" id="pwd" placeholder="••••••••••" autocomplete="current-password" />
+    <button class="btn-login" id="btn-login">Entrar al panel</button>
+    <p id="login-error">❌ Contraseña incorrecta. Inténtalo de nuevo.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════ APP ══════════════════════════ -->
+<div id="app">
+
+  <!-- Sidebar -->
+  <aside id="sidebar">
+    <div class="brand">
+      <span>Jepeto<b>Reformas</b></span>
+      <small>Panel de administración</small>
+    </div>
+    <nav>
+      <a class="active" data-section="dashboard">
+        <span class="icon">📊</span> Dashboard
+      </a>
+      <a data-section="imagenes">
+        <span class="icon">🖼️</span> Gestión de Imágenes
+      </a>
+      <a data-section="blog">
+        <span class="icon">📝</span> Entradas del Blog
+      </a>
+      <a data-section="ajustes">
+        <span class="icon">⚙️</span> Ajustes
+      </a>
+      <a data-section="ayuda">
+        <span class="icon">📖</span> Instrucciones
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <p style="font-size:.75rem;color:rgba(255,255,255,.5);margin-bottom:.6rem;">
+        <span class="status-dot ok" id="api-dot"></span>
+        <span id="api-status-text">Comprobando...</span>
+      </p>
+      <button class="btn-logout" id="btn-logout">Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main id="main">
+
+    <!-- ── DASHBOARD ── -->
+    <section class="section active" id="section-dashboard">
+      <h1 class="page-title">Dashboard</h1>
+      <p class="page-subtitle">Bienvenido al panel de Jepeto Reformas 🏗️</p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">🖼️</div>
+          <div>
+            <div class="stat-val">26</div>
+            <div class="stat-lbl">Imágenes en el sitio</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📂</div>
+          <div>
+            <div class="stat-val">6</div>
+            <div class="stat-lbl">Secciones de imágenes</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📝</div>
+          <div>
+            <div class="stat-val" id="stat-posts">3</div>
+            <div class="stat-lbl">Entradas de blog</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🚀</div>
+          <div>
+            <div class="stat-val" id="upload-mode-stat">–</div>
+            <div class="stat-lbl">Modo de subida activo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🗺️ Cómo actualizar una imagen (resumen rápido)</div>
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Configura tu token de GitHub</h4>
+            <p>Ve a <strong>Ajustes</strong> e introduce tu Personal Access Token de GitHub para poder subir imágenes directamente.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Abre la sección "Gestión de Imágenes"</h4>
+            <p>Verás todas las imágenes del sitio organizadas por sección (Servicios, Proyectos, Galería, etc.).</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Arrastra o selecciona la nueva imagen</h4>
+            <p>Haz clic en el área punteada de la imagen que quieras cambiar y elige tu nueva foto.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Pulsa "Guardar imagen"</h4>
+            <p>La imagen se sube directamente a GitHub. El sitio web se actualiza en <strong>1-2 minutos</strong> automáticamente.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="mode-info-card">
+        <div class="card-title">📡 Modo de subida activo</div>
+        <p id="mode-info-text" style="font-size:.9rem;color:var(--muted);">Detectando...</p>
+      </div>
+    </section>
+
+    <!-- ── IMÁGENES ── -->
+    <section class="section" id="section-imagenes">
+      <h1 class="page-title">🖼️ Gestión de Imágenes</h1>
+      <p class="page-subtitle">Haz clic en una sección para expandirla y reemplazar sus imágenes.</p>
+      <div id="img-sections-container">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- ── BLOG ── -->
+    <section class="section" id="section-blog">
+      <h1 class="page-title">📝 Entradas del Blog</h1>
+      <p class="page-subtitle">Edita los artículos del blog. Los cambios se guardan en GitHub automáticamente.</p>
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.25rem;">
+        <button class="btn-add" id="btn-add-post">＋ Nueva entrada</button>
+        <button class="btn-primary" id="btn-save-blog">💾 Guardar cambios en GitHub</button>
+        <button class="btn-secondary" id="btn-download-blog">⬇️ Descargar blog.json</button>
+        <button class="btn-secondary" id="btn-load-blog">🔄 Recargar desde GitHub</button>
+      </div>
+      <div id="blog-posts-container">
+        <p style="color:var(--muted);font-size:.9rem;">Cargando entradas...</p>
+      </div>
+    </section>
+
+    <!-- ── AJUSTES ── -->
+    <section class="section" id="section-ajustes">
+      <h1 class="page-title">⚙️ Ajustes</h1>
+      <p class="page-subtitle">Configura el token de GitHub y la contraseña del panel.</p>
+
+      <div class="card">
+        <div class="card-title">🔑 Token de GitHub (Personal Access Token)</div>
+        <div class="settings-field">
+          <label>GitHub Personal Access Token</label>
+          <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
+          <p class="settings-help">
+            Necesario para subir imágenes directamente a GitHub sin SSH.
+            <a href="https://github.com/settings/tokens/new?scopes=repo&description=Jepeto+Admin" target="_blank" rel="noopener">
+              ➜ Crear token en GitHub ↗
+            </a>
+            (activa el permiso <code>repo</code>)
+          </p>
+          <label style="display:flex;align-items:center;gap:.45rem;margin-top:.5rem;font-weight:500;font-size:.85rem;cursor:pointer;">
+            <input type="checkbox" id="gh-token-remember" style="width:auto;margin:0;" />
+            Recordar token en este navegador
+          </label>
+          <p class="settings-help" style="color:var(--red);margin-top:.25rem;">⚠️ Solo marca esta opción en un dispositivo personal de confianza.</p>
+        </div>
+        <button class="btn-primary" id="btn-save-token">Guardar token</button>
+        <button class="btn-secondary" style="margin-left:.5rem;" id="btn-test-token">Probar conexión</button>
+        <p id="token-status" style="font-size:.85rem;margin-top:.75rem;display:none;"></p>
+      </div>
+
+      <div class="card" style="margin-top:1rem;">
+        <div class="card-title">🔒 Cambiar contraseña del panel</div>
+        <div class="settings-field">
+          <label>Nueva contraseña</label>
+          <input type="password" id="new-pwd" placeholder="••••••••" autocomplete="new-password" />
+        </div>
+        <div class="settings-field">
+          <label>Repetir nueva contraseña</label>
+          <input type="password" id="new-pwd2" placeholder="••••••••" autocomplete="new-password" />
+        </div>
+        <button class="btn-primary" id="btn-change-pwd">Cambiar contraseña</button>
+        <p id="pwd-status" style="font-size:.85rem;margin-top:.75rem;display:none;"></p>
+      </div>
+    </section>
+
+    <!-- ── AYUDA ── -->
+    <section class="section" id="section-ayuda">
+      <h1 class="page-title">📖 Instrucciones de uso</h1>
+
+      <div class="card">
+        <div class="card-title">🚀 Guía completa para actualizar imágenes</div>
+
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Obtener un token de GitHub</h4>
+            <p>Ve a <a href="https://github.com/settings/tokens/new?scopes=repo&description=Jepeto+Admin" target="_blank" rel="noopener" style="color:var(--blue)">github.com/settings/tokens</a>, crea un token con el permiso <code>repo</code> y cópialo.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Pegar el token en Ajustes</h4>
+            <p>Abre el menú <strong>Ajustes</strong> de este panel, pega el token en el campo "GitHub Personal Access Token" y pulsa <strong>Guardar token</strong>.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Ir a Gestión de Imágenes</h4>
+            <p>Haz clic en <strong>Gestión de Imágenes</strong> en la barra lateral. Expande la sección que quieres modificar (p.ej. "Galería").</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Subir la nueva imagen</h4>
+            <p>Arrastra tu nueva foto al recuadro punteado, o haz clic en él para seleccionarla. Verás una vista previa de la nueva imagen.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h4>Pulsar "Guardar imagen"</h4>
+            <p>El panel sube la imagen a GitHub con un <em>commit</em> automático. En 1-2 minutos se actualiza el sitio web en jepeto.es.</p>
+          </div>
+        </div>
+
+        <div class="tip-box">
+          💡 <strong>Formato de imágenes recomendado:</strong> JPG o WebP, menos de 2 MB, y con dimensiones similares a la imagen original para que encaje bien en la web.
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:1rem;">
+        <div class="card-title">📝 Cómo editar el Blog</div>
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Abre "Entradas del Blog"</h4>
+            <p>Verás todas las entradas con sus títulos, descripciones e imágenes.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Edita los campos</h4>
+            <p>Modifica el título, descripción, URL o ruta de la imagen directamente en los campos de texto.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Guarda los cambios</h4>
+            <p>Pulsa <strong>"Guardar cambios en GitHub"</strong>. En 1-2 minutos se actualiza el blog en la web.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Añadir nueva entrada</h4>
+            <p>Pulsa <strong>"+ Nueva entrada"</strong>, rellena los campos, sube la imagen desde "Gestión de Imágenes" y guarda.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:1rem;">
+        <div class="card-title">❓ Modos de subida disponibles</div>
+        <table style="width:100%;border-collapse:collapse;font-size:.875rem;">
+          <thead><tr style="background:var(--bg);">
+            <th style="padding:.6rem .8rem;text-align:left;">Modo</th>
+            <th style="padding:.6rem .8rem;text-align:left;">Cuándo funciona</th>
+            <th style="padding:.6rem .8rem;text-align:left;">¿Necesita token?</th>
+          </tr></thead>
+          <tbody>
+            <tr><td style="padding:.6rem .8rem;"><span class="mode-badge github">GitHub API</span></td><td style="padding:.6rem .8rem;">Siempre, desde cualquier dispositivo</td><td style="padding:.6rem .8rem;">✅ Sí</td></tr>
+            <tr><td style="padding:.6rem .8rem;"><span class="mode-badge local">File System API</span></td><td style="padding:.6rem .8rem;">Chrome/Edge en local (archivo abierto desde disco)</td><td style="padding:.6rem .8rem;">❌ No</td></tr>
+            <tr><td style="padding:.6rem .8rem;"><span class="mode-badge dl">Descarga</span></td><td style="padding:.6rem .8rem;">Cualquier navegador (fallback)</td><td style="padding:.6rem .8rem;">❌ No</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Toast container -->
+<div id="toast-container"></div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   JEPETO ADMIN PANEL — JavaScript
+═══════════════════════════════════════════════════════════════ */
+
+const REPO_OWNER  = 'juansoso666';
+const REPO_NAME   = 'jepeto-web';
+const REPO_BRANCH = 'main';
+const BLOG_PATH   = 'docs/src/assets/data/blog.json';
+
+// Default password SHA-256 hash: "jepeto2024"
+const DEFAULT_HASH = '32e8c73061488b828ddcc1b4a126ac26b04710f6276baba6944ae2f7a31841aa';
+
+/* ── Image configuration ── */
+const IMAGE_SECTIONS = [
+  {
+    id: 'principal',
+    title: '🏠 Imágenes Principales',
+    items: [
+      { key: 'hero-bg',  label: 'Fondo Hero (portada)',        repoPath: 'docs/src/assets/images/hero-bg.jpg',  filename: 'hero-bg.jpg',  webPath: '../src/assets/images/hero-bg.jpg' },
+      { key: 'logo',     label: 'Logo de la empresa',          repoPath: 'docs/src/assets/images/logo.png',     filename: 'logo.png',     webPath: '../src/assets/images/logo.png' },
+      { key: 'favicon',  label: 'Favicon (icono navegador)',   repoPath: 'docs/src/assets/images/favicon.png',  filename: 'favicon.png',  webPath: '../src/assets/images/favicon.png' }
+    ]
+  },
+  {
+    id: 'servicios',
+    title: '🔧 Servicios',
+    items: [
+      { key: 'reformas', label: 'Reformas Integrales', repoPath: 'docs/src/assets/images/servicios/reformas-integrales.png', filename: 'reformas-integrales.png', webPath: '../src/assets/images/servicios/reformas-integrales.png' },
+      { key: 'cocinas',  label: 'Cocinas',             repoPath: 'docs/src/assets/images/servicios/cocinas.png',             filename: 'cocinas.png',             webPath: '../src/assets/images/servicios/cocinas.png' },
+      { key: 'banos',    label: 'Baños',               repoPath: 'docs/src/assets/images/servicios/baños.png',              filename: 'baños.png',              webPath: '../src/assets/images/servicios/baños.png' },
+      { key: 'pintura',  label: 'Pintura',             repoPath: 'docs/src/assets/images/servicios/pintura.png',             filename: 'pintura.png',             webPath: '../src/assets/images/servicios/pintura.png' },
+      { key: 'carp',     label: 'Carpintería',         repoPath: 'docs/src/assets/images/servicios/carpinteria.png',         filename: 'carpinteria.png',         webPath: '../src/assets/images/servicios/carpinteria.png' },
+      { key: 'elec',     label: 'Electricidad',        repoPath: 'docs/src/assets/images/servicios/electricidad.png',        filename: 'electricidad.png',        webPath: '../src/assets/images/servicios/electricidad.png' }
+    ]
+  },
+  {
+    id: 'proyectos',
+    title: '🏗️ Proyectos',
+    items: Array.from({ length: 6 }, (_, i) => ({
+      key: `proyecto${i+1}`,
+      label: `Proyecto ${i+1}`,
+      repoPath: `docs/src/assets/images/proyectos/proyecto${i+1}.jpg`,
+      filename: `proyecto${i+1}.jpg`,
+      webPath: `../src/assets/images/proyectos/proyecto${i+1}.jpg`
+    }))
+  },
+  {
+    id: 'galeria',
+    title: '🖼️ Galería',
+    items: Array.from({ length: 6 }, (_, i) => ({
+      key: `galeria${i+1}`,
+      label: `Foto Galería ${i+1}`,
+      repoPath: `docs/src/assets/images/galeria/galeria${i+1}.jpg`,
+      filename: `galeria${i+1}.jpg`,
+      webPath: `../src/assets/images/galeria/galeria${i+1}.jpg`
+    }))
+  },
+  {
+    id: 'blog-imgs',
+    title: '📰 Blog (imágenes de artículos)',
+    items: [
+      { key: 'art1', label: 'Imagen Artículo 1', repoPath: 'docs/src/assets/images/blog/articulo1.png', filename: 'articulo1.png', webPath: '../src/assets/images/blog/articulo1.png' },
+      { key: 'art2', label: 'Imagen Artículo 2', repoPath: 'docs/src/assets/images/blog/articulo2.png', filename: 'articulo2.png', webPath: '../src/assets/images/blog/articulo2.png' },
+      { key: 'art3', label: 'Imagen Artículo 3', repoPath: 'docs/src/assets/images/blog/articulo3.jpg', filename: 'articulo3.jpg', webPath: '../src/assets/images/blog/articulo3.jpg' }
+    ]
+  },
+  {
+    id: 'equipo',
+    title: '👥 Sobre Nosotros',
+    items: [
+      { key: 'equipo1', label: 'Foto Equipo 1', repoPath: 'docs/src/assets/images/sobre-nosotros/equipo1.png', filename: 'equipo1.png', webPath: '../src/assets/images/sobre-nosotros/equipo1.png' },
+      { key: 'equipo2', label: 'Foto Equipo 2', repoPath: 'docs/src/assets/images/sobre-nosotros/equipo2.jpg', filename: 'equipo2.jpg', webPath: '../src/assets/images/sobre-nosotros/equipo2.jpg' },
+      { key: 'taller',  label: 'Foto del Taller', repoPath: 'docs/src/assets/images/sobre-nosotros/taller.jpg', filename: 'taller.jpg', webPath: '../src/assets/images/sobre-nosotros/taller.jpg' }
+    ]
+  }
+];
+
+/* ── State ── */
+let state = {
+  blogPosts: [],
+  blogSha: null
+};
+
+/* ── Helpers ── */
+async function sha256(message) {
+  const buf = new TextEncoder().encode(message);
+  const hash = await crypto.subtle.digest('SHA-256', buf);
+  return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+/* Token: stored in sessionStorage by default (cleared on tab close).
+ * If the user ticks "Recordar token", it is also persisted in localStorage. */
+function getToken() {
+  return sessionStorage.getItem('jepeto_gh_token') || localStorage.getItem('jepeto_gh_token') || '';
+}
+function setToken(token, remember) {
+  sessionStorage.setItem('jepeto_gh_token', token);
+  if (remember) localStorage.setItem('jepeto_gh_token', token);
+  else localStorage.removeItem('jepeto_gh_token');
+}
+function getPasswordHash() { return localStorage.getItem('jepeto_pwd_hash') || DEFAULT_HASH; }
+function isUsingDefaultPassword() { return !localStorage.getItem('jepeto_pwd_hash'); }
+
+function toast(msg, type = 'info', duration = 4000) {
+  const icons = { success:'✅', error:'❌', warn:'⚠️', info:'ℹ️' };
+  const el = document.createElement('div');
+  el.className = `toast ${type}`;
+  el.innerHTML = `<span>${icons[type] || '💬'}</span><span>${msg}</span>`;
+  document.getElementById('toast-container').appendChild(el);
+  setTimeout(() => el.remove(), duration);
+}
+
+function utf8ToBase64(str) {
+  const bytes = new TextEncoder().encode(str);
+  const binary = Array.from(bytes, b => String.fromCharCode(b)).join('');
+  return btoa(binary);
+}
+
+function base64ToUtf8(b64) {
+  const binary = atob(b64.replace(/\n/g, ''));
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+
+async function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+/* ── GitHub API ── */
+async function ghGet(path) {
+  const r = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`, {
+    headers: {
+      'Authorization': `Bearer ${getToken()}`,
+      'Accept': 'application/vnd.github+json'
+    }
+  });
+  if (!r.ok) throw new Error(`GitHub API ${r.status}: ${r.statusText}`);
+  return r.json();
+}
+
+async function ghPut(path, base64Content, message, sha) {
+  const body = { message, content: base64Content, branch: REPO_BRANCH };
+  if (sha) body.sha = sha;
+  const r = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${getToken()}`,
+      'Accept': 'application/vnd.github+json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  });
+  if (!r.ok) {
+    const err = await r.json().catch(() => ({}));
+    throw new Error(err.message || `GitHub API ${r.status}`);
+  }
+  return r.json();
+}
+
+async function uploadToGitHub(file, repoPath) {
+  const base64 = await fileToBase64(file);
+  let sha = null;
+  try {
+    const cur = await ghGet(repoPath);
+    sha = cur.sha;
+  } catch (_) { /* new file */ }
+  const filename = repoPath.split('/').pop();
+  return ghPut(repoPath, base64, `Admin: actualizar imagen ${filename}`, sha);
+}
+
+/* ── Upload dispatch ── */
+function detectMode() {
+  const token = getToken();
+  if (token) return 'github';
+  if ('showSaveFilePicker' in window && window.isSecureContext) return 'filesystem';
+  return 'download';
+}
+
+function getModeLabel() {
+  const m = detectMode();
+  if (m === 'github')     return '<span class="mode-badge github">🐙 GitHub API</span>';
+  if (m === 'filesystem') return '<span class="mode-badge local">💾 File System API</span>';
+  return '<span class="mode-badge dl">⬇️ Descarga manual</span>';
+}
+
+async function saveImage(file, item, btnEl, statusEl) {
+  const mode = detectMode();
+  btnEl.disabled = true;
+  btnEl.innerHTML = '<span class="spinner"></span> Guardando…';
+
+  try {
+    if (mode === 'github') {
+      await uploadToGitHub(file, item.repoPath);
+      toast(`✅ "${item.label}" subida a GitHub. La web se actualiza en ~2 min.`, 'success');
+      statusEl.textContent = '✅ Guardado en GitHub';
+      statusEl.className = 'save-status ok';
+
+    } else if (mode === 'filesystem') {
+      const ext = item.filename.split('.').pop();
+      const handle = await window.showSaveFilePicker({
+        suggestedName: item.filename,
+        types: [{ description: 'Imagen', accept: { 'image/*': [`.${ext}`] } }]
+      });
+      const writable = await handle.createWritable();
+      await writable.write(file);
+      await writable.close();
+      toast(`✅ Guardado: ${item.filename}`, 'success');
+      statusEl.textContent = '✅ Guardado en disco';
+      statusEl.className = 'save-status ok';
+
+    } else {
+      // Download fallback
+      const url = URL.createObjectURL(file);
+      const a = document.createElement('a');
+      a.href = url; a.download = item.filename;
+      document.body.appendChild(a); a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      toast(`⬇️ Archivo descargado: "${item.filename}". Ponlo en ${item.repoPath}`, 'warn', 7000);
+      statusEl.textContent = '⬇️ Descargado. Ver instrucciones.';
+      statusEl.className = 'save-status ok';
+    }
+  } catch (err) {
+    console.error(err);
+    toast(`❌ Error: ${err.message}`, 'error');
+    statusEl.textContent = `❌ ${err.message}`;
+    statusEl.className = 'save-status err';
+  } finally {
+    btnEl.disabled = false;
+    btnEl.innerHTML = '💾 Guardar imagen';
+    statusEl.style.display = 'block';
+  }
+}
+
+/* ── Render: Image sections ── */
+function renderImageSections() {
+  const container = document.getElementById('img-sections-container');
+  container.innerHTML = '';
+
+  IMAGE_SECTIONS.forEach(section => {
+    const wrap = document.createElement('div');
+    wrap.className = 'img-section';
+
+    const header = document.createElement('div');
+    header.className = 'img-section-header';
+    header.innerHTML = `<h3>${section.title}</h3><span class="chevron">▼</span>`;
+    header.addEventListener('click', () => {
+      header.classList.toggle('open');
+      grid.classList.toggle('open');
+    });
+
+    const grid = document.createElement('div');
+    grid.className = 'img-grid';
+
+    section.items.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'img-card';
+
+      card.innerHTML = `
+        <div class="img-card-label">${item.label}</div>
+        <img class="img-preview" src="${item.webPath}" alt="${item.label}"
+             onerror="this.style.background='#e2e8f0';this.alt='Sin imagen'" />
+        <div class="img-card-path">📁 ${item.repoPath}</div>
+
+        <div class="drop-zone" id="dz-${item.key}">
+          <input type="file" accept="image/*" id="file-${item.key}" />
+          <p class="dz-text">📂 <b>Haz clic</b> o arrastra aquí<br/>la nueva imagen</p>
+        </div>
+
+        <div class="new-preview-wrap" id="np-${item.key}">
+          <img class="new-preview" id="npi-${item.key}" src="" alt="Nueva imagen" />
+          <p class="preview-label">✨ Vista previa de la nueva imagen</p>
+        </div>
+
+        <button class="btn-save" id="btn-${item.key}" disabled>💾 Guardar imagen</button>
+        <div class="save-status" id="st-${item.key}"></div>
+      `;
+
+      grid.appendChild(card);
+
+      // Wire up after appending
+      const fileInput  = card.querySelector(`#file-${item.key}`);
+      const dropZone   = card.querySelector(`#dz-${item.key}`);
+      const newPreview = card.querySelector(`#np-${item.key}`);
+      const newImg     = card.querySelector(`#npi-${item.key}`);
+      const btnSave    = card.querySelector(`#btn-${item.key}`);
+      const statusEl   = card.querySelector(`#st-${item.key}`);
+      let selectedFile = null;
+
+      function handleFile(file) {
+        if (!file || !file.type.startsWith('image/')) {
+          toast('⚠️ Por favor selecciona una imagen válida.', 'warn');
+          return;
+        }
+        selectedFile = file;
+        const url = URL.createObjectURL(file);
+        newImg.src = url;
+        newPreview.style.display = 'block';
+        btnSave.disabled = false;
+        statusEl.style.display = 'none';
+      }
+
+      fileInput.addEventListener('change', () => handleFile(fileInput.files[0]));
+
+      dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+      dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+      dropZone.addEventListener('drop', e => {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+        handleFile(e.dataTransfer.files[0]);
+      });
+
+      btnSave.addEventListener('click', async () => {
+        if (!selectedFile) return;
+        await saveImage(selectedFile, item, btnSave, statusEl);
+      });
+    });
+
+    wrap.appendChild(header);
+    wrap.appendChild(grid);
+    container.appendChild(wrap);
+  });
+}
+
+/* ── Render: Blog ── */
+function renderBlogPosts() {
+  const container = document.getElementById('blog-posts-container');
+  container.innerHTML = '';
+
+  if (!state.blogPosts.length) {
+    container.innerHTML = '<p style="color:var(--muted);">No hay entradas. Pulsa "+ Nueva entrada" para añadir una.</p>';
+    document.getElementById('stat-posts').textContent = '0';
+    return;
+  }
+
+  document.getElementById('stat-posts').textContent = state.blogPosts.length;
+
+  state.blogPosts.forEach((post, idx) => {
+    const card = document.createElement('div');
+    card.className = 'blog-post-card';
+    card.innerHTML = `
+      <p style="font-size:.75rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.75rem;">Entrada ${idx + 1}</p>
+      <div class="blog-field"><label>Título</label>
+        <input type="text" value="${escHtml(post.titulo)}" data-idx="${idx}" data-field="titulo" /></div>
+      <div class="blog-field"><label>Descripción</label>
+        <input type="text" value="${escHtml(post.descripcion)}" data-idx="${idx}" data-field="descripcion" /></div>
+      <div class="blog-field"><label>Ruta de la imagen</label>
+        <input type="text" value="${escHtml(post.imagen)}" data-idx="${idx}" data-field="imagen" placeholder="src/assets/images/blog/articulo1.png" /></div>
+      <div class="blog-field"><label>URL del artículo</label>
+        <input type="text" value="${escHtml(post.url)}" data-idx="${idx}" data-field="url" placeholder="#" /></div>
+      <div class="blog-actions">
+        <button class="btn-danger" data-del="${idx}">🗑️ Eliminar</button>
+      </div>
+    `;
+
+    // Wire inputs
+    card.querySelectorAll('input[data-field]').forEach(input => {
+      input.addEventListener('input', () => {
+        const i = +input.dataset.idx;
+        const f = input.dataset.field;
+        state.blogPosts[i][f] = input.value;
+      });
+    });
+
+    card.querySelector('[data-del]').addEventListener('click', () => {
+      if (confirm('¿Eliminar esta entrada del blog?')) {
+        state.blogPosts.splice(idx, 1);
+        renderBlogPosts();
+      }
+    });
+
+    container.appendChild(card);
+  });
+}
+
+function escHtml(str) {
+  return String(str || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+async function loadBlog() {
+  document.getElementById('blog-posts-container').innerHTML = '<p style="color:var(--muted);">Cargando...</p>';
+  const token = getToken();
+  if (!token) {
+    state.blogPosts = [];
+    state.blogSha = null;
+    renderBlogPosts();
+    toast('⚠️ Sin token de GitHub. Configura el token en Ajustes para cargar y guardar el blog.', 'warn', 6000);
+    return;
+  }
+  try {
+    const data = await ghGet(BLOG_PATH);
+    state.blogSha = data.sha;
+    state.blogPosts = JSON.parse(base64ToUtf8(data.content));
+    renderBlogPosts();
+  } catch (err) {
+    toast(`❌ Error al cargar blog: ${err.message}`, 'error');
+    state.blogPosts = [];
+    renderBlogPosts();
+  }
+}
+
+async function saveBlog() {
+  if (!getToken()) { toast('⚠️ Configura el token de GitHub en Ajustes.', 'warn'); return; }
+  try {
+    const json = JSON.stringify(state.blogPosts, null, 2);
+    const base64 = utf8ToBase64(json);
+    const result = await ghPut(BLOG_PATH, base64, 'Admin: actualizar entradas del blog', state.blogSha);
+    state.blogSha = result.content.sha;
+    toast('✅ Blog guardado en GitHub. Actualización en ~2 min.', 'success');
+  } catch (err) {
+    toast(`❌ Error al guardar blog: ${err.message}`, 'error');
+  }
+}
+
+function downloadBlog() {
+  const json = JSON.stringify(state.blogPosts, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'blog.json';
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+  toast('⬇️ blog.json descargado.', 'info');
+}
+
+/* ── Navigation ── */
+function navigate(sectionId) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('#sidebar nav a').forEach(a => a.classList.remove('active'));
+  document.getElementById(`section-${sectionId}`).classList.add('active');
+  document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+
+  // Lazy load blog
+  if (sectionId === 'blog' && state.blogPosts.length === 0) loadBlog();
+}
+
+/* ── Auth ── */
+async function tryLogin() {
+  const pwd = document.getElementById('pwd').value;
+  if (!pwd) return;
+  const hash = await sha256(pwd);
+  if (hash === getPasswordHash()) {
+    sessionStorage.setItem('jepeto_authed', '1');
+    showApp();
+    // Warn if still using the default password
+    if (isUsingDefaultPassword()) {
+      setTimeout(() => toast('⚠️ Estás usando la contraseña por defecto. Cámbiala en Ajustes cuanto antes.', 'warn', 8000), 800);
+    }
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+    document.getElementById('pwd').value = '';
+    document.getElementById('pwd').focus();
+  }
+}
+
+function showApp() {
+  document.getElementById('login-screen').style.display = 'none';
+  const app = document.getElementById('app');
+  app.style.display = 'flex';
+  renderImageSections();
+  updateModeUI();
+  checkApiStatus();
+}
+
+function logout() {
+  sessionStorage.removeItem('jepeto_authed');
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('pwd').value = '';
+}
+
+/* ── Mode UI ── */
+function updateModeUI() {
+  const mode = detectMode();
+  const modeLabel = { github: 'GitHub API', filesystem: 'File System', download: 'Descarga' }[mode];
+  document.getElementById('upload-mode-stat').textContent = modeLabel;
+  document.getElementById('mode-info-text').innerHTML = {
+    github:     '🐙 <strong>Modo GitHub API</strong> — Las imágenes se suben directamente a GitHub y el sitio se actualiza automáticamente en 1-2 minutos.',
+    filesystem: '💾 <strong>Modo File System</strong> — Las imágenes se guardan directamente en disco (Chrome/Edge). Recuerda hacer git push después para publicar los cambios.',
+    download:   '⬇️ <strong>Modo Descarga</strong> — El archivo se descarga a tu ordenador. Colócalo en la carpeta correcta del proyecto y luego haz git push. Configura un token de GitHub en Ajustes para el modo automático.'
+  }[mode];
+}
+
+async function checkApiStatus() {
+  const dot = document.getElementById('api-dot');
+  const txt = document.getElementById('api-status-text');
+  const token = getToken();
+  if (!token) {
+    dot.className = 'status-dot warn';
+    txt.textContent = 'Sin token configurado';
+    return;
+  }
+  try {
+    const r = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    if (r.ok) {
+      dot.className = 'status-dot ok';
+      txt.textContent = 'GitHub conectado ✓';
+    } else {
+      dot.className = 'status-dot warn';
+      txt.textContent = 'Token inválido';
+    }
+  } catch (_) {
+    dot.className = 'status-dot warn';
+    txt.textContent = 'Sin conexión';
+  }
+}
+
+/* ── Settings ── */
+async function testToken() {
+  const token = document.getElementById('gh-token').value.trim();
+  const statusEl = document.getElementById('token-status');
+  if (!token) { toast('⚠️ Escribe un token primero.', 'warn'); return; }
+  statusEl.style.display = 'block';
+  statusEl.textContent = '⏳ Probando conexión...';
+  statusEl.style.color = 'var(--muted)';
+  try {
+    const r = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    if (r.ok) {
+      statusEl.textContent = '✅ Conexión exitosa con GitHub';
+      statusEl.style.color = 'var(--green)';
+    } else {
+      statusEl.textContent = `❌ Token inválido (${r.status})`;
+      statusEl.style.color = 'var(--red)';
+    }
+  } catch (_) {
+    statusEl.textContent = '❌ Sin conexión a Internet';
+    statusEl.style.color = 'var(--red)';
+  }
+}
+
+/* ── Event Listeners ── */
+document.getElementById('btn-login').addEventListener('click', tryLogin);
+document.getElementById('pwd').addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
+document.getElementById('btn-logout').addEventListener('click', logout);
+
+document.querySelectorAll('#sidebar nav a').forEach(a => {
+  a.addEventListener('click', () => navigate(a.dataset.section));
+});
+
+document.getElementById('btn-add-post').addEventListener('click', () => {
+  state.blogPosts.push({ titulo: 'Nueva entrada', descripcion: 'Descripción aquí', imagen: 'src/assets/images/blog/articulo1.png', url: '#' });
+  renderBlogPosts();
+  toast('📝 Entrada añadida. No olvides guardar los cambios.', 'info');
+});
+document.getElementById('btn-save-blog').addEventListener('click', saveBlog);
+document.getElementById('btn-download-blog').addEventListener('click', downloadBlog);
+document.getElementById('btn-load-blog').addEventListener('click', loadBlog);
+
+document.getElementById('btn-save-token').addEventListener('click', () => {
+  const token  = document.getElementById('gh-token').value.trim();
+  const remember = document.getElementById('gh-token-remember').checked;
+  if (!token) { toast('⚠️ El token no puede estar vacío.', 'warn'); return; }
+  setToken(token, remember);
+  updateModeUI();
+  checkApiStatus();
+  toast(`✅ Token guardado${remember ? ' (recordado en este navegador)' : ' (solo esta sesión)'}.`, 'success');
+});
+
+document.getElementById('btn-test-token').addEventListener('click', testToken);
+
+document.getElementById('btn-change-pwd').addEventListener('click', async () => {
+  const p1 = document.getElementById('new-pwd').value;
+  const p2 = document.getElementById('new-pwd2').value;
+  const el = document.getElementById('pwd-status');
+  el.style.display = 'block';
+  if (!p1 || p1.length < 8) { el.textContent = '⚠️ La contraseña debe tener al menos 8 caracteres.'; el.style.color = 'var(--red)'; return; }
+  if (p1 !== p2) { el.textContent = '❌ Las contraseñas no coinciden.'; el.style.color = 'var(--red)'; return; }
+  const hash = await sha256(p1);
+  localStorage.setItem('jepeto_pwd_hash', hash);
+  el.textContent = '✅ Contraseña cambiada correctamente.';
+  el.style.color = 'var(--green)';
+  document.getElementById('new-pwd').value = '';
+  document.getElementById('new-pwd2').value = '';
+  toast('🔒 Contraseña actualizada.', 'success');
+});
+
+/* ── Pre-fill saved token in settings ── */
+function prefillSettings() {
+  const token = getToken();
+  if (token) {
+    document.getElementById('gh-token').value = token;
+    // If token was persisted to localStorage, check the "remember" box
+    if (localStorage.getItem('jepeto_gh_token')) {
+      document.getElementById('gh-token-remember').checked = true;
+    }
+  }
+}
+
+/* ── Auto-login if session active ── */
+if (sessionStorage.getItem('jepeto_authed')) {
+  showApp();
+  prefillSettings();
+} else {
+  prefillSettings();
+}
+</script>
+</body>
+</html>
