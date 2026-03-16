@@ -107,6 +107,10 @@ function indexOf(buf, search, start = 0) {
  *  Add additional origins via env: CORS_ORIGINS=https://example.com,https://other.com
  */
 const ALLOWED_ORIGINS = [
+  /* file:// — when admin/index.html is opened directly from disk.
+   * NOTE: 'null' also matches sandboxed iframes, but since this server
+   * is only meant for local development use, the risk is acceptable. */
+  'null',
   'http://localhost',
   'http://127.0.0.1',
   'https://jepeto.es',
