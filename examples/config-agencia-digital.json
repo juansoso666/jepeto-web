@@ -1,0 +1,297 @@
+{
+  "company": {
+    "name": "DigitalWave Agency",
+    "slogan": "Transformamos ideas en experiencias digitales",
+    "description": "Agencia digital especializada en marketing, desarrollo web y estrategias de marca",
+    "founded": "2018",
+    "logo": "/src/assets/images/logo.png",
+    "favicon": "/src/assets/images/favicon.png"
+  },
+  "contact": {
+    "phone": "+34911223344",
+    "email": "hello@digitalwave.com",
+    "whatsapp": "+34911223344",
+    "address": {
+      "street": "Paseo de la Innovación 100, Piso 5",
+      "city": "Barcelona",
+      "postalCode": "08018",
+      "country": "España",
+      "countryCode": "ES"
+    },
+    "coordinates": {
+      "latitude": "41.3851",
+      "longitude": "2.1734"
+    },
+    "hours": {
+      "weekdays": "09:00 - 18:00",
+      "weekend": "Cerrado"
+    }
+  },
+  "social": {
+    "facebook": "https://facebook.com/digitalwave",
+    "instagram": "https://instagram.com/digitalwave",
+    "linkedin": "https://linkedin.com/company/digitalwave",
+    "twitter": "https://twitter.com/digitalwave",
+    "youtube": ""
+  },
+  "seo": {
+    "siteUrl": "https://www.digitalwave.com",
+    "keywords": "agencia digital, marketing digital, desarrollo web, SEO, diseño UX, branding",
+    "author": "DigitalWave Agency",
+    "language": "es",
+    "locale": "es_ES"
+  },
+  "theme": {
+    "primaryColor": "#6366f1",
+    "secondaryColor": "#4f46e5",
+    "accentColor": "#ec4899",
+    "textColor": "#1f2937",
+    "backgroundColor": "#ffffff",
+    "headerBg": "#ffffff",
+    "footerBg": "#111827"
+  },
+  "pages": {
+    "index": {
+      "title": "DigitalWave | Agencia Digital en Barcelona",
+      "description": "Agencia digital líder en marketing, desarrollo web y diseño. Transformamos tu negocio online.",
+      "heroImage": "/src/assets/images/hero-digital.jpg",
+      "heroTitle": "Impulsa tu marca en el mundo digital",
+      "heroSubtitle": "Estrategias que convierten visitantes en clientes",
+      "ctaText": "Hablemos de tu proyecto",
+      "ctaLink": "/contacto.html"
+    },
+    "servicios": {
+      "title": "Servicios | DigitalWave",
+      "description": "Marketing digital, desarrollo web, SEO, diseño UX/UI y gestión de redes sociales",
+      "headerTitle": "Nuestros Servicios",
+      "headerSubtitle": "Soluciones digitales 360°"
+    },
+    "proyectos": {
+      "title": "Portfolio | DigitalWave",
+      "description": "Descubre los proyectos que hemos desarrollado para nuestros clientes",
+      "headerTitle": "Portfolio",
+      "headerSubtitle": "Casos de éxito que nos enorgullecen"
+    },
+    "galeria": {
+      "title": "Trabajos | DigitalWave",
+      "description": "Galería visual de diseños, campañas y proyectos digitales",
+      "headerTitle": "Nuestros Trabajos",
+      "headerSubtitle": "Creatividad en acción"
+    },
+    "blog": {
+      "title": "Blog | DigitalWave",
+      "description": "Tendencias, consejos y novedades del mundo digital",
+      "headerTitle": "Blog Digital",
+      "headerSubtitle": "Conocimiento que suma"
+    },
+    "sobreNosotros": {
+      "title": "Sobre Nosotros | DigitalWave",
+      "description": "Conoce nuestro equipo, valores y metodología de trabajo",
+      "headerTitle": "Sobre Nosotros",
+      "headerSubtitle": "Pasión por lo digital desde 2018"
+    },
+    "contacto": {
+      "title": "Contacto | DigitalWave",
+      "description": "Cuéntanos tu proyecto. Primera consulta gratuita",
+      "headerTitle": "Hablemos",
+      "headerSubtitle": "Tu éxito digital comienza aquí",
+      "formSubmitUrl": "https://formsubmit.co/hello@digitalwave.com",
+      "formSuccessPage": "/gracias.html"
+    }
+  },
+  "services": [
+    {
+      "id": "marketing-digital",
+      "name": "Marketing Digital",
+      "description": "Estrategias integrales para aumentar tu visibilidad y ventas online",
+      "icon": "📈",
+      "image": "/src/assets/images/servicios/marketing.jpg",
+      "features": [
+        "Google Ads & Meta Ads",
+        "Email Marketing",
+        "Automatización",
+        "Análisis y reporting"
+      ]
+    },
+    {
+      "id": "desarrollo-web",
+      "name": "Desarrollo Web",
+      "description": "Sitios web a medida, rápidos, seguros y optimizados para conversión",
+      "icon": "💻",
+      "image": "/src/assets/images/servicios/desarrollo.jpg",
+      "features": [
+        "Diseño responsive",
+        "CMS personalizado",
+        "E-commerce",
+        "Optimización SEO"
+      ]
+    },
+    {
+      "id": "seo",
+      "name": "SEO & SEM",
+      "description": "Posicionamiento orgánico y campañas de pago para máxima visibilidad",
+      "icon": "🔍",
+      "image": "/src/assets/images/servicios/seo.jpg",
+      "features": [
+        "Auditoría SEO",
+        "Keyword research",
+        "Link building",
+        "Campañas SEM"
+      ]
+    },
+    {
+      "id": "diseno-ux",
+      "name": "Diseño UX/UI",
+      "description": "Experiencias de usuario excepcionales que aumentan la conversión",
+      "icon": "🎨",
+      "image": "/src/assets/images/servicios/diseno.jpg",
+      "features": [
+        "Investigación de usuarios",
+        "Wireframes y prototipos",
+        "Tests de usabilidad",
+        "Design system"
+      ]
+    },
+    {
+      "id": "redes-sociales",
+      "name": "Social Media",
+      "description": "Gestión profesional de tus redes sociales con contenido de calidad",
+      "icon": "📱",
+      "image": "/src/assets/images/servicios/social.jpg",
+      "features": [
+        "Estrategia de contenidos",
+        "Community management",
+        "Campañas publicitarias",
+        "Análisis de métricas"
+      ]
+    },
+    {
+      "id": "branding",
+      "name": "Branding",
+      "description": "Construcción y fortalecimiento de tu identidad de marca",
+      "icon": "✨",
+      "image": "/src/assets/images/servicios/branding.jpg",
+      "features": [
+        "Identidad corporativa",
+        "Manual de marca",
+        "Naming",
+        "Estrategia de marca"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "ecommerce-fashion",
+      "name": "E-commerce Fashion Boutique",
+      "description": "Tienda online completa con integración de pasarela de pago y gestión de inventario",
+      "image": "/src/assets/images/proyectos/ecommerce.jpg",
+      "category": "E-commerce",
+      "year": "2024",
+      "duration": "3 meses",
+      "features": [
+        "Shopify personalizado",
+        "150+ productos",
+        "ROI 250% primer año",
+        "App móvil integrada"
+      ]
+    },
+    {
+      "id": "app-fitness",
+      "name": "App de Fitness & Nutrición",
+      "description": "Aplicación móvil con planes personalizados y seguimiento de progreso",
+      "image": "/src/assets/images/proyectos/app-fitness.jpg",
+      "category": "Apps Móviles",
+      "year": "2024",
+      "duration": "4 meses",
+      "features": [
+        "iOS y Android",
+        "10k+ usuarios activos",
+        "Integración wearables",
+        "Gamificación"
+      ]
+    },
+    {
+      "id": "campana-startup",
+      "name": "Campaña de Lanzamiento Startup Tech",
+      "description": "Estrategia de marketing 360° para el lanzamiento de startup tecnológica",
+      "image": "/src/assets/images/proyectos/startup.jpg",
+      "category": "Marketing Digital",
+      "year": "2023",
+      "duration": "6 meses",
+      "features": [
+        "5M+ impresiones",
+        "CPA reducido 40%",
+        "1000+ leads cualificados",
+        "Cobertura medios"
+      ]
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Roberto Sánchez",
+      "role": "CEO, TechStartup",
+      "text": "DigitalWave no solo desarrolló nuestra web, crearon una máquina de conversión. Las ventas aumentaron un 300% en 6 meses.",
+      "rating": 5,
+      "image": ""
+    },
+    {
+      "id": 2,
+      "name": "María López",
+      "role": "Directora Marketing, Fashion Brand",
+      "text": "Su equipo de social media es increíble. Han hecho crecer nuestra comunidad de forma orgánica y auténtica.",
+      "rating": 5,
+      "image": ""
+    },
+    {
+      "id": 3,
+      "name": "David Torres",
+      "role": "Fundador, Fitness App",
+      "text": "Profesionales de primer nivel. La app superó todas nuestras expectativas y los usuarios la adoran.",
+      "rating": 5,
+      "image": ""
+    }
+  ],
+  "blog": [
+    {
+      "id": 1,
+      "titulo": "10 Tendencias de Marketing Digital para 2024",
+      "descripcion": "Las estrategias y tecnologías que dominarán el marketing este año",
+      "imagen": "/src/assets/images/blog/tendencias.jpg",
+      "url": "#",
+      "fecha": "2024-02-12",
+      "autor": "Ana García - CMO",
+      "categoria": "Marketing"
+    },
+    {
+      "id": 2,
+      "titulo": "Cómo Mejorar tu SEO en 30 Días",
+      "descripcion": "Guía paso a paso para optimizar tu sitio web y aparecer en Google",
+      "imagen": "/src/assets/images/blog/seo-guide.jpg",
+      "url": "#",
+      "fecha": "2024-02-08",
+      "autor": "Carlos Ruiz - SEO Specialist",
+      "categoria": "SEO"
+    },
+    {
+      "id": 3,
+      "titulo": "UX Design: Principios Fundamentales",
+      "descripcion": "Los conceptos esenciales para crear experiencias de usuario memorables",
+      "imagen": "/src/assets/images/blog/ux-design.jpg",
+      "url": "#",
+      "fecha": "2024-02-01",
+      "autor": "Laura Martín - UX Lead",
+      "categoria": "Diseño"
+    }
+  ],
+  "features": {
+    "showWhatsappButton": true,
+    "showCookieConsent": true,
+    "enableBlog": true,
+    "enableTestimonials": true,
+    "enableGallery": true,
+    "enableProjects": true,
+    "googleAnalyticsId": "G-XXXXXXXXXX",
+    "facebookPixelId": "123456789"
+  }
+}

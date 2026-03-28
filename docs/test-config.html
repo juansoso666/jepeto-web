@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Config Loader</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    /* Colores personalizados desde config */
+    :root {
+      --primary-color: #10b981;
+      --secondary-color: #059669;
+      --accent-color: #f59e0b;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 p-8">
+  
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-4xl font-bold mb-8 text-center">🧪 Test de Config Loader</h1>
+    
+    <!-- Sección 1: Datos de la empresa -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+      <h2 class="text-2xl font-bold mb-4">📋 Datos de la Empresa</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <strong>Nombre:</strong>
+          <span data-config="company.name">Cargando...</span>
+        </div>
+        <div>
+          <strong>Eslogan:</strong>
+          <span data-config="company.slogan">Cargando...</span>
+        </div>
+        <div>
+          <strong>Teléfono:</strong>
+          <span data-config="contact.phone">Cargando...</span>
+        </div>
+        <div>
+          <strong>Email:</strong>
+          <span data-config="contact.email">Cargando...</span>
+        </div>
+        <div>
+          <strong>Ciudad:</strong>
+          <span data-config="contact.address.city">Cargando...</span>
+        </div>
+        <div>
+          <strong>URL:</strong>
+          <span data-config="seo.siteUrl">Cargando...</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Sección 2: Servicios -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+      <h2 class="text-2xl font-bold mb-4">🛠️ Servicios</h2>
+      <div id="services-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <p class="text-gray-500">Cargando servicios...</p>
+      </div>
+    </div>
+    
+    <!-- Sección 3: Proyectos -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+      <h2 class="text-2xl font-bold mb-4">📁 Proyectos</h2>
+      <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <p class="text-gray-500">Cargando proyectos...</p>
+      </div>
+    </div>
+    
+    <!-- Sección 4: Blog -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+      <h2 class="text-2xl font-bold mb-4">📝 Blog</h2>
+      <div id="blog-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <p class="text-gray-500">Cargando artículos...</p>
+      </div>
+    </div>
+    
+    <!-- Sección 5: Testimonios -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+      <h2 class="text-2xl font-bold mb-4">💬 Testimonios</h2>
+      <div id="testimonials-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <p class="text-gray-500">Cargando testimonios...</p>
+      </div>
+    </div>
+    
+    <!-- Sección 6: Test de placeholders de texto -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+      <h2 class="text-2xl font-bold mb-4">🔤 Test de Placeholders</h2>
+      <p>Empresa: <strong>{{ company.name }}</strong></p>
+      <p>Teléfono: <strong>{{ contact.phone }}</strong></p>
+      <p>Email: <strong>{{ contact.email }}</strong></p>
+    </div>
+    
+    <!-- Estado de carga -->
+    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+      <p class="text-blue-700">
+        ℹ️ Abre la consola del navegador (F12) para ver mensajes de depuración
+      </p>
+    </div>
+  </div>
+  
+  <!-- Cargar config-loader -->
+  <script src="/src/js/config-loader.js"></script>
+  
+  <script>
+    // Verificar que la configuración se cargó correctamente
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        if (window.configLoader && window.configLoader.config) {
+          console.log('✅ Configuración cargada correctamente:', window.configLoader.config);
+        } else {
+          console.error('❌ Error: No se pudo cargar la configuración');
+        }
+      }, 1000);
+    });
+  </script>
+  
+</body>
+</html>
