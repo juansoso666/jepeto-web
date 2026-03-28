@@ -201,9 +201,10 @@
       display:inline-flex; align-items:center; gap:.4rem; padding:.35rem .75rem;
       border-radius:999px; font-size:.78rem; font-weight:700;
     }
-    .mode-badge.github { background:#dbeafe; color:#1d4ed8; }
-    .mode-badge.local  { background:#dcfce7; color:#166534; }
-    .mode-badge.dl     { background:#fef9c3; color:#854d0e; }
+    .mode-badge.github  { background:#dbeafe; color:#1d4ed8; }
+    .mode-badge.local   { background:#dcfce7; color:#166534; }
+    .mode-badge.dl      { background:#fef9c3; color:#854d0e; }
+    .mode-badge.server  { background:#f3e8ff; color:#7e22ce; }
 
     /* ── Instructions ── */
     .step { display:flex; gap:1rem; margin-bottom:1.25rem; }
@@ -420,6 +421,27 @@
       </div>
 
       <div class="card" style="margin-top:1rem;">
+        <div class="card-title">🖥️ Servidor Local de Imágenes (upload-server.js)</div>
+        <p style="font-size:.875rem;color:var(--muted);margin-bottom:1rem;">
+          Sube imágenes directamente al disco <strong>sin necesidad de token de GitHub</strong>.
+          Inicia el servidor con <code>node upload-server.js</code> y copia el token que aparece en la consola.
+        </p>
+        <div class="settings-field">
+          <label>URL del servidor</label>
+          <input type="text" id="server-url" placeholder="http://localhost:3001" />
+          <p class="settings-help">Por defecto <code>http://localhost:3001</code>. Cámbiala si usas otro puerto (<code>PORT=3002 node upload-server.js</code>).</p>
+        </div>
+        <div class="settings-field">
+          <label>Token del servidor</label>
+          <input type="password" id="server-token" placeholder="Pega aquí el token que aparece en la consola" />
+          <p class="settings-help">Se muestra al arrancar el servidor. Cópialo tal cual de la consola.</p>
+        </div>
+        <button class="btn-primary" id="btn-save-server">Guardar configuración</button>
+        <button class="btn-secondary" style="margin-left:.5rem;" id="btn-test-server">Probar conexión</button>
+        <p id="server-status" style="font-size:.85rem;margin-top:.75rem;display:none;"></p>
+      </div>
+
+      <div class="card" style="margin-top:1rem;">
         <div class="card-title">🔒 Cambiar contraseña del panel</div>
         <div class="settings-field">
           <label>Nueva contraseña</label>
@@ -523,11 +545,56 @@
             <th style="padding:.6rem .8rem;text-align:left;">¿Necesita token?</th>
           </tr></thead>
           <tbody>
-            <tr><td style="padding:.6rem .8rem;"><span class="mode-badge github">GitHub API</span></td><td style="padding:.6rem .8rem;">Siempre, desde cualquier dispositivo</td><td style="padding:.6rem .8rem;">✅ Sí</td></tr>
+            <tr><td style="padding:.6rem .8rem;"><span class="mode-badge github">GitHub API</span></td><td style="padding:.6rem .8rem;">Siempre, desde cualquier dispositivo</td><td style="padding:.6rem .8rem;">✅ Sí (GitHub PAT)</td></tr>
+            <tr><td style="padding:.6rem .8rem;"><span class="mode-badge server">Servidor Local</span></td><td style="padding:.6rem .8rem;">Cuando <code>upload-server.js</code> está activo en el mismo ordenador</td><td style="padding:.6rem .8rem;">✅ Sí (token del servidor)</td></tr>
             <tr><td style="padding:.6rem .8rem;"><span class="mode-badge local">File System API</span></td><td style="padding:.6rem .8rem;">Chrome/Edge en local (archivo abierto desde disco)</td><td style="padding:.6rem .8rem;">❌ No</td></tr>
             <tr><td style="padding:.6rem .8rem;"><span class="mode-badge dl">Descarga</span></td><td style="padding:.6rem .8rem;">Cualquier navegador (fallback)</td><td style="padding:.6rem .8rem;">❌ No</td></tr>
           </tbody>
         </table>
+      </div>
+
+      <div class="card" style="margin-top:1rem;">
+        <div class="card-title">🖥️ Cómo usar el Servidor Local (método más sencillo)</div>
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Instala Node.js si no lo tienes</h4>
+            <p>Descárgalo gratis en <a href="https://nodejs.org" target="_blank" rel="noopener" style="color:var(--blue)">nodejs.org</a> e instálalo.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Abre una terminal en la carpeta del proyecto</h4>
+            <p>En Windows: haz clic derecho sobre la carpeta del proyecto y elige "Abrir en Terminal". En Mac: arrastra la carpeta a Terminal.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Ejecuta el servidor</h4>
+            <p>Escribe el siguiente comando y pulsa Enter:</p>
+            <p><code>node upload-server.js</code></p>
+            <p>Verás el <strong>🔑 TOKEN DE ACCESO</strong> en la consola. Cópialo.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Configura el token en Ajustes</h4>
+            <p>Ve a la sección <strong>Ajustes → Servidor Local</strong>, pega el token y pulsa <strong>Guardar configuración</strong>. Luego haz clic en <strong>Probar conexión</strong> para verificar.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h4>¡Sube imágenes!</h4>
+            <p>Ve a <strong>Gestión de Imágenes</strong>. El modo activo mostrará <span class="mode-badge server" style="font-size:.75rem;">🖥️ Servidor Local</span>. Arrastra tu imagen y pulsa <strong>Guardar imagen</strong>. ¡Listo!</p>
+          </div>
+        </div>
+        <div class="tip-box">
+          💡 <strong>Nota:</strong> El servidor guarda las imágenes directamente en el disco. Para publicar los cambios en la web necesitas hacer <code>git push</code> o activar GitHub Pages si aún no lo has hecho.
+        </div>
       </div>
     </section>
 
@@ -641,6 +708,36 @@ function setToken(token, remember) {
 function getPasswordHash() { return localStorage.getItem('jepeto_pwd_hash') || DEFAULT_HASH; }
 function isUsingDefaultPassword() { return !localStorage.getItem('jepeto_pwd_hash'); }
 
+/* ── Local upload server config ── */
+function normalizeServerUrl(raw) {
+  return (raw || '').trim().replace(/\/$/, '') || 'http://localhost:3001';
+}
+
+function getServerConfig() {
+  const raw = localStorage.getItem('jepeto_server_config');
+  return raw ? JSON.parse(raw) : { url: 'http://localhost:3001', token: '' };
+}
+function setServerConfig(url, token) {
+  localStorage.setItem('jepeto_server_config', JSON.stringify({ url: normalizeServerUrl(url), token }));
+}
+
+/* serverAvailable is updated async; used by the synchronous detectMode() */
+let serverAvailable = false;
+
+async function checkServerAvailability() {
+  const cfg = getServerConfig();
+  if (!cfg.token) { serverAvailable = false; return false; }
+  try {
+    const r = await fetch(`${cfg.url}/api/status`, {
+      signal: AbortSignal.timeout(2000)
+    });
+    serverAvailable = r.ok;
+  } catch (_) {
+    serverAvailable = false;
+  }
+  return serverAvailable;
+}
+
 function toast(msg, type = 'info', duration = 4000) {
   const icons = { success:'✅', error:'❌', warn:'⚠️', info:'ℹ️' };
   const el = document.createElement('div');
@@ -714,10 +811,35 @@ async function uploadToGitHub(file, repoPath) {
   return ghPut(repoPath, base64, `Admin: actualizar imagen ${filename}`, sha);
 }
 
+/* ── Local server upload ── */
+async function uploadToServer(file, repoPath) {
+  const cfg = getServerConfig();
+  // repoPath is like 'docs/src/assets/images/hero-bg.jpg'
+  // The server expects a path relative to its docs/ directory
+  const serverPath = repoPath.replace(/^docs\//, '');
+
+  const formData = new FormData();
+  formData.append('image', file);
+  formData.append('path', serverPath);
+
+  const r = await fetch(`${cfg.url}/api/upload`, {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${cfg.token}` },
+    body: formData
+  });
+  if (!r.ok) {
+    const err = await r.json().catch(() => ({}));
+    throw new Error(err.error || `Error del servidor: ${r.status}`);
+  }
+  return r.json();
+}
+
 /* ── Upload dispatch ── */
 function detectMode() {
   const token = getToken();
   if (token) return 'github';
+  const cfg = getServerConfig();
+  if (cfg.token && serverAvailable) return 'server';
   if ('showSaveFilePicker' in window && window.isSecureContext) return 'filesystem';
   return 'download';
 }
@@ -725,6 +847,7 @@ function detectMode() {
 function getModeLabel() {
   const m = detectMode();
   if (m === 'github')     return '<span class="mode-badge github">🐙 GitHub API</span>';
+  if (m === 'server')     return '<span class="mode-badge server">🖥️ Servidor Local</span>';
   if (m === 'filesystem') return '<span class="mode-badge local">💾 File System API</span>';
   return '<span class="mode-badge dl">⬇️ Descarga manual</span>';
 }
@@ -739,6 +862,12 @@ async function saveImage(file, item, btnEl, statusEl) {
       await uploadToGitHub(file, item.repoPath);
       toast(`✅ "${item.label}" subida a GitHub. La web se actualiza en ~2 min.`, 'success');
       statusEl.textContent = '✅ Guardado en GitHub';
+      statusEl.className = 'save-status ok';
+
+    } else if (mode === 'server') {
+      await uploadToServer(file, item.repoPath);
+      toast(`✅ "${item.label}" guardada en el servidor local.`, 'success');
+      statusEl.textContent = '✅ Guardado en servidor';
       statusEl.className = 'save-status ok';
 
     } else if (mode === 'filesystem') {
@@ -1017,12 +1146,13 @@ function logout() {
 /* ── Mode UI ── */
 function updateModeUI() {
   const mode = detectMode();
-  const modeLabel = { github: 'GitHub API', filesystem: 'File System', download: 'Descarga' }[mode];
+  const modeLabel = { github: 'GitHub API', server: 'Servidor Local', filesystem: 'File System', download: 'Descarga' }[mode];
   document.getElementById('upload-mode-stat').textContent = modeLabel;
   document.getElementById('mode-info-text').innerHTML = {
     github:     '🐙 <strong>Modo GitHub API</strong> — Las imágenes se suben directamente a GitHub y el sitio se actualiza automáticamente en 1-2 minutos.',
+    server:     '🖥️ <strong>Modo Servidor Local</strong> — Las imágenes se guardan directamente en el disco. Los cambios son inmediatos. Para publicarlos en la web haz <code>git push</code>.',
     filesystem: '💾 <strong>Modo File System</strong> — Las imágenes se guardan directamente en disco (Chrome/Edge). Recuerda hacer git push después para publicar los cambios.',
-    download:   '⬇️ <strong>Modo Descarga</strong> — El archivo se descarga a tu ordenador. Colócalo en la carpeta correcta del proyecto y luego haz git push. Configura un token de GitHub en Ajustes para el modo automático.'
+    download:   '⬇️ <strong>Modo Descarga</strong> — El archivo se descarga a tu ordenador. Colócalo en la carpeta correcta del proyecto y luego haz git push. Configura un token de GitHub o inicia el servidor local en Ajustes para el modo automático.'
   }[mode];
 }
 
@@ -1030,26 +1160,35 @@ async function checkApiStatus() {
   const dot = document.getElementById('api-dot');
   const txt = document.getElementById('api-status-text');
   const token = getToken();
-  if (!token) {
-    dot.className = 'status-dot warn';
-    txt.textContent = 'Sin token configurado';
+  if (token) {
+    try {
+      const r = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (r.ok) {
+        dot.className = 'status-dot ok';
+        txt.textContent = 'GitHub conectado ✓';
+      } else {
+        dot.className = 'status-dot warn';
+        txt.textContent = 'Token inválido';
+      }
+    } catch (_) {
+      dot.className = 'status-dot warn';
+      txt.textContent = 'Sin conexión';
+    }
     return;
   }
-  try {
-    const r = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`, {
-      headers: { 'Authorization': `Bearer ${token}` }
-    });
-    if (r.ok) {
-      dot.className = 'status-dot ok';
-      txt.textContent = 'GitHub conectado ✓';
-    } else {
-      dot.className = 'status-dot warn';
-      txt.textContent = 'Token inválido';
-    }
-  } catch (_) {
+  // Check local server when no GitHub token
+  const reachable = await checkServerAvailability();
+  if (reachable) {
+    dot.className = 'status-dot ok';
+    txt.textContent = 'Servidor local activo ✓';
+  } else {
     dot.className = 'status-dot warn';
-    txt.textContent = 'Sin conexión';
+    const cfg = getServerConfig();
+    txt.textContent = cfg.token ? 'Servidor no disponible' : 'Sin token configurado';
   }
+  updateModeUI();
 }
 
 /* ── Settings ── */
@@ -1073,6 +1212,33 @@ async function testToken() {
     }
   } catch (_) {
     statusEl.textContent = '❌ Sin conexión a Internet';
+    statusEl.style.color = 'var(--red)';
+  }
+}
+
+async function testServerConnection() {
+  const url   = normalizeServerUrl(document.getElementById('server-url').value);
+  const token = document.getElementById('server-token').value.trim();
+  const statusEl = document.getElementById('server-status');
+  statusEl.style.display = 'block';
+  statusEl.textContent = '⏳ Probando conexión...';
+  statusEl.style.color = 'var(--muted)';
+  try {
+    const r = await fetch(`${url}/api/status`, { signal: AbortSignal.timeout(3000) });
+    if (r.ok) {
+      if (!token) {
+        statusEl.textContent = '⚠️ Servidor encontrado, pero falta el token. Pégalo y guarda.';
+        statusEl.style.color = 'var(--yellow)';
+      } else {
+        statusEl.textContent = '✅ Servidor activo y listo';
+        statusEl.style.color = 'var(--green)';
+      }
+    } else {
+      statusEl.textContent = `❌ Servidor respondió con error ${r.status}`;
+      statusEl.style.color = 'var(--red)';
+    }
+  } catch (_) {
+    statusEl.textContent = '❌ No se pudo conectar. ¿Está el servidor arrancado? (node upload-server.js)';
     statusEl.style.color = 'var(--red)';
   }
 }
@@ -1107,6 +1273,17 @@ document.getElementById('btn-save-token').addEventListener('click', () => {
 
 document.getElementById('btn-test-token').addEventListener('click', testToken);
 
+document.getElementById('btn-save-server').addEventListener('click', () => {
+  const url   = normalizeServerUrl(document.getElementById('server-url').value);
+  const token = document.getElementById('server-token').value.trim();
+  if (!token) { toast('⚠️ El token del servidor no puede estar vacío.', 'warn'); return; }
+  setServerConfig(url, token);
+  checkApiStatus();
+  toast('✅ Configuración del servidor guardada.', 'success');
+});
+
+document.getElementById('btn-test-server').addEventListener('click', testServerConnection);
+
 document.getElementById('btn-change-pwd').addEventListener('click', async () => {
   const p1 = document.getElementById('new-pwd').value;
   const p2 = document.getElementById('new-pwd2').value;
@@ -1133,6 +1310,9 @@ function prefillSettings() {
       document.getElementById('gh-token-remember').checked = true;
     }
   }
+  const cfg = getServerConfig();
+  document.getElementById('server-url').value   = cfg.url   || 'http://localhost:3001';
+  document.getElementById('server-token').value = cfg.token || '';
 }
 
 /* ── Auto-login if session active ── */
